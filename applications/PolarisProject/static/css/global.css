@@ -1,0 +1,46 @@
+body{
+    background-color: white;
+}
+
+.modal {
+    width: 350px;
+    padding: 20px;
+    margin: 150px auto 20px;
+    border: solid 2px rgba(0,0,0,0.1);
+    border-radius: 6px;
+}
+
+.modal * {
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.modal .input {
+    width: 100%;
+    padding: 8px 0px;
+    border-radius: 0;
+    border: none;
+    border-bottom: solid 1px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    font-weight: bold;
+    outline: none;
+}
+
+.modal .input:hover,
+.modal .input:focus {
+    color: #37A0F3;
+    border-color: #37A0F3;
+}
+
+.modal .button {
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    color: white;
+    background: #37A0F3;
+    border: solid 1px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
