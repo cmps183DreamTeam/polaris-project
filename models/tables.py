@@ -12,6 +12,6 @@ db.define_table('tel',
                 Field('ra', 'text'),
                 Field('decl', 'text'),
                 Field('rad', 'text'),
-                Field('cat', requires=IS_IN_SET(['GSC', 'NOMAD', 'UCAC'])),
+                Field('cat', requires=IS_IN_SET(['USNO-B1','GSC', 'NOMAD', 'UCAC'])),
                 )
 
