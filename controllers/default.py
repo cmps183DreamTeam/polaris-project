@@ -8,7 +8,6 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 
-
 def index():
     """
     example action using the internationalization operator T and flash
@@ -17,8 +16,20 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    from astroquery.vizier import Vizier
+    from astropy.coordinates import SkyCoord
+    from astropy.coordinates import Angle
+    user_in_targ_ra = '18h36m56.33645s'
+    user_in_targ_dec = '+38d47m01.2802s'
+    cat=["NOMAD", "UCAC"]
+    rad = '5s'
+    # set target
+    cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
+    # call find_guides
+    call_dict = find_guides(cVega, cat, rad)
+
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    return dict(message=T('Welcome to web2py!'), call_dict=call_dict)
 
 
 def user():
@@ -39,9 +50,37 @@ def user():
     """
     return dict(form=auth())
 
+def celestial_target(ra, dec):
+    from astropy.coordinates import SkyCoord
+    coords = SkyCoord(ra, dec)
+    return coords
+
+def find_guides(target, cat, rad):
+    from astroquery.vizier import Vizier
+    from astropy.coordinates import Angle
+    result = Vizier.query_region(target, radius=rad, catalog=cat)
+    dict = {}
+    #run through each table in results
+    for x in range(0, len(result[0])):
+        #create list with RA, DEC, mag values
+        col_list = {}
+        col_list['RA'] = float(result[0][x]['_RAJ2000'])
+        col_list['DEC'] = float(result[0][x]['_DEJ2000'])
+        col_list['mag'] = float(result[0][x]['Vmag'])
+        #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
+        dict[x] = col_list
+    return dict
 
 def search():
-    return dict(list=[])
+    user_in_targ_ra = '18h36m56.33645s'
+    user_in_targ_dec = '+38d47m01.2802s'
+    cat=["NOMAD", "UCAC"]
+    rad = '5s'
+    # set target
+    cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
+    # call find_guides
+    call_dict = find_guides(cVega, cat, rad)
+    return dict(call_dict=call_dict)
 
 
 @cache.action()

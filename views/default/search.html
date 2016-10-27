@@ -23,5 +23,8 @@
                 </tr>
             </tbody>
         </table>
+    {{for object in call_dict:}}
+        <p>RA: {{=call_dict[object]['RA']}} DEC: {{=call_dict[object]['DEC']}} mag: {{=call_dict[object]['mag']}}</p>
+        {{pass}}
     </body>
 </html>
