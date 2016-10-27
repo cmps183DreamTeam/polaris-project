@@ -15,14 +15,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                </tr>
+                {{for x in range(0, len(dict)):}}
+                    <tr>
+                        <td>NA</td>
+                        <td>{{=dict[x]['RA']}}</td>
+                        <td>{{=dict[x]['DEC']}}</td>
+                        <td>{{=dict[x]['mag']}}</td>
+                    </tr>
+                {{pass}}
             </tbody>
         </table>
+        <div>
+        </div>
     {{for object in call_dict:}}
         <p>RA: {{=call_dict[object]['RA']}} DEC: {{=call_dict[object]['DEC']}} mag: {{=call_dict[object]['mag']}}</p>
         {{pass}}

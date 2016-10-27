@@ -19,17 +19,23 @@ def index():
     from astroquery.vizier import Vizier
     from astropy.coordinates import SkyCoord
     from astropy.coordinates import Angle
-    user_in_targ_ra = '18h36m56.33645s'
-    user_in_targ_dec = '+38d47m01.2802s'
-    cat=["NOMAD", "UCAC"]
-    rad = '5s'
-    # set target
-    cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
-    # call find_guides
-    call_dict = find_guides(cVega, cat, rad)
-
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), call_dict=call_dict)
+    # user_in_targ_ra = '18h36m56.33645s'
+    # user_in_targ_dec = '+38d47m01.2802s'
+    # cat=["NOMAD", "UCAC"]
+    # rad = '5s'
+    # # set target
+    # cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
+    # # call find_guides
+    # call_dict = find_guides(cVega, cat, rad)
+    #
+    # response.flash = T("Hello World")
+    # return dict(message=T('Welcome to web2py!'), call_dict=call_dict)
+    form_type = 'create'
+    form = SQLFORM(db.tel)
+    #if form entered correctly, go to earch.html
+    if form.process().accepted:
+            redirect(URL('default', 'search'))
+    return dict(form = form)
 
 
 def user():
@@ -80,6 +86,11 @@ def search():
     cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
     # call find_guides
     call_dict = find_guides(cVega, cat, rad)
+
+    if request.args(0) is not None:
+        boom = request.args(0)
+        return dict(boom = boom)
+
     return dict(call_dict=call_dict)
 
 
