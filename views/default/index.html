@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>The Polaris Project</title>
+        <link href = "{{=URL('static','css/global.css')}}" type ="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="modal">
+            <form method="GET" action="{{= URL('default', 'search')}}">
+                <input class="input" type="text" name="name" placeholder="Target Name">
+                <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
+                <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
+                <input class="input" type="text" name="equinox" placeholder="Equinox">
+                <select class="input" name="telescope">
+                    <option disabled="disabled" selected>My Telescope</option>
+                    <option value="nasa">NASA</option>
+                    <option value="huston">Huston</option>
+                    <option value="new">Add New Telescope</option>
+                </select>
+                <input class="button" type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
