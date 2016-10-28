@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Search</title>
+        <link href = "{{=URL('static','css/global.css')}}" type ="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>RA</td>
+                    <td>DEC</td>
+                    <td>Magnitude</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{for entry in dict:}}
+                    <tr>
+                        <td>NA</td>
+                        <td>{{=dict[entry]['RA']}}</td>
+                        <td>{{=dict[entry]['DEC']}}</td>
+                        <td>{{=dict[entry]['mag']}}</td>
+                    </tr>
+                {{pass}}
+            </tbody>
+        </table>
+        <div>
+        </div>
+    </body>
+</html>
