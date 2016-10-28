@@ -77,3 +77,14 @@ body * {
     cursor: pointer;
     outline: none;
 }
+
+#extend_menu{
+    display: none;
+    position:fixed; /*or  absolute*/
+    top:30px;
+    left:10px;
+    width:100%:
+    height:30px;
+    z-index: 999; /* or  greater value */
+}
+

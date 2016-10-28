@@ -8,10 +8,14 @@
 # Consult manual for more options, validators, etc.
 import datetime
 db.define_table('tel',
+				Field('user_email', 'text'),
                 Field('name', 'text'),
                 Field('ra', 'text'),
                 Field('decl', 'text'),
                 Field('rad', 'text'),
-                Field('cat', requires=IS_IN_SET(['USNO-B1','GSC', 'NOMAD', 'UCAC'])),
                 )
 
+db.define_table('quiries',
+				Field('user_email', 'text'),
+                Field('queries', 'text'),
+                )

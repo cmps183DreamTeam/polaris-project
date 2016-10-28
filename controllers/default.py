@@ -36,7 +36,11 @@ def index():
     #     if form.process().accepted:
     #             redirect(URL('default', 'search'))
     #     return dict(form = form)
-    return dict()
+    if request.args(0):
+        log_out = True
+    else:
+        log_out = False
+    return dict(log_out = log_out)
 
 def test():
     redirect(URL('default', 'index'))
@@ -128,6 +132,7 @@ def find_guides(target, cat, rad):
 #     call_dict = find_guides(cVega, in_cat, in_rad)
 #     return dict(dict = call_dict)
 
+@auth.requires_login()
 def search():
     in_ra = request.vars.ra
     in_dec = request.vars.decl

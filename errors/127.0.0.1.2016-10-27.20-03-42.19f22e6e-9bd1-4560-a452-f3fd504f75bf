@@ -1,0 +1,385 @@
+(dp1
+S'output'
+p2
+S'The "end" tag is unmatched, please check if you have a starting "block" tag'
+p3
+sS'layer'
+p4
+S"'layout.html'"
+p5
+sS'code'
+p6
+S'<!DOCTYPE html>\r\n<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or \'en\'}}"> <!--<![endif]-->\r\n  <head>\r\n    <meta charset="utf-8">\r\n    <!-- www.phpied.com/conditional-comments-block-downloads/ -->\r\n    <!-- Always force latest IE rendering engine\r\n         (even in intranet) & Chrome Frame\r\n         Remove this if you use the .htaccess -->\r\n    <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and \',chrome=1\' or \'\'}}">\r\n    <!--  Mobile Viewport Fix\r\n          j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag\r\n          device-width: Occupy full width of the screen in its current orientation\r\n          initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height\r\n          user-scalable = yes allows the user to zoom in -->\r\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\r\n    <title>{{=response.title or request.application}}</title>\r\n    <!-- http://dev.w3.org/html5/markup/meta.name.html -->\r\n    <meta name="application-name" content="{{=request.application}}">\r\n    <!-- Speaking of Google, don\'t forget to set your site up:\r\n         http://google.com/webmasters -->\r\n    <meta name="google-site-verification" content="">\r\n    <!-- include stylesheets -->\r\n    <link rel="stylesheet" href="{{=URL(\'static\',\'css/bootstrap.min.css\')}}"/>\r\n    <link rel="stylesheet" href="{{=URL(\'static\',\'css/web2py-bootstrap3.css\')}}"/>\r\n    <link rel="stylesheet" href="{{=URL(\'static\',\'css/myapp.css\')}}"/>\r\n    <link rel="stylesheet" href="{{=URL(\'static\', \'font-awesome-4.6.3/css/font-awesome.min.css\')}}"/>\r\n\r\n    <link rel="shortcut icon" href="{{=URL(\'static\',\'images/favicon.ico\')}}" type="image/x-icon">\r\n    <link rel="apple-touch-icon" href="{{=URL(\'static\',\'images/favicon.png\')}}">\r\n    <!-- All JavaScript at the bottom, except for Modernizr which enables\r\n         HTML5 elements & feature detects -->\r\n    <script src="{{=URL(\'static\',\'js/modernizr-2.8.3.min.js\')}}"></script>\r\n    <!--[if lt IE 9]>\r\n        <script src="{{=URL(\'static\',\'js/respond-1.4.2.min.js\')}}"></script>\r\n        <![endif]-->\r\n    <!-- Favicons -->\r\n    {{include \'web2py_ajax.html\'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->\r\n    {{block head}}{{end}}\r\n    {{\r\n    # using sidebars need to know what sidebar you want to use\r\n    mc0 = \'col-md-12\'\r\n    mc1 = \'col-md-9\'\r\n    mc2 = \'col-md-6\'\r\n    left_sidebar_enabled = globals().get(\'left_sidebar_enabled\', False)\r\n    right_sidebar_enabled = globals().get(\'right_sidebar_enabled\', False)\r\n    middle_column = {0: mc0, 1: mc1, 2: mc2}[\r\n    (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]\r\n    }}\r\n  </head>\r\n  <body>\r\n    <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->\r\n    <div class="w2p_flash alert alert-dismissable">{{=response.flash or \'\'}}</div>\r\n    <!-- Navbar ======================================= -->\r\n    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n      <div class="container-fluid">\r\n        <div class="navbar-header">\r\n          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\r\n            <span class="sr-only">Toggle navigation</span>\r\n            <span class="icon-bar"></span>\r\n            <span class="icon-bar"></span>\r\n            <span class="icon-bar"></span>\r\n          </button>\r\n\r\n        </div>\r\n        <div class="collapse navbar-collapse navbar-ex1-collapse">\r\n          <ul class="nav navbar-nav navbar-right">\r\n            {{=\'auth\' in globals() and auth.navbar(\'Welcome\',mode=\'dropdown\') or \'\'}}\r\n          </ul>\r\n          {{if response.menu:}}\r\n          {{=MENU(response.menu, _class=\'nav navbar-nav\',li_class=\'dropdown\',ul_class=\'dropdown-menu\')}}\r\n          {{pass}}\r\n        </div>\r\n      </div>\r\n    </nav>\r\n    <!-- Masthead ===================================== -->\r\n    {{block header}}\r\n    {{end}}\r\n    <!-- Main ========================================= -->\r\n    <!-- Begin page content -->\r\n    <div class="container-fluid main-container">\r\n      {{if left_sidebar_enabled:}}\r\n        <div class="col-md-3 left-sidebar">\r\n            {{block left_sidebar}}\r\n            <h3>Left Sidebar</h3>\r\n            <p></p>\r\n            {{end}}\r\n        </div>\r\n      {{pass}}\r\n\r\n      <div class="{{=middle_column}}">\r\n        {{block center}}\r\n        {{include}}\r\n        {{end}}\r\n      </div>\r\n\r\n      {{if right_sidebar_enabled:}}\r\n        <div class="col-md-3">\r\n            {{block right_sidebar}}\r\n            <h3>Right Sidebar</h3>\r\n            <p></p>\r\n            {{end}}\r\n        </div>\r\n      {{pass}}\r\n\r\n    </div>\r\n\r\n    \r\n    {{end}}\r\n    <!-- The javascript =============================== -->\r\n    <script src="{{=URL(\'static\',\'js/bootstrap.min.js\')}}"></script>\r\n    <script src="{{=URL(\'static\',\'js/web2py-bootstrap3.js\')}}"></script>\r\n    {{block page_js}}{{end page_js}}\r\n    {{if response.google_analytics_id:}}\r\n    <!-- Analytics ==================================== -->\r\n    <script src="{{=URL(\'static\',\'js/analytics.min.js\')}}"></script>\r\n    <script type="text/javascript">\r\n      analytics.initialize({\r\n      \'Google Analytics\':{trackingId:\'{{=response.google_analytics_id}}\'}\r\n      });\r\n    </script>\r\n    {{pass}}\r\n    <!-- Share ============================y============ -->\r\n    <script src="{{=URL(\'static\',\'js/share.js\',vars=dict(static=URL(\'static\',\'images\')))}}"></script>\r\n  </body>\r\n</html>\r\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'gluon.rocket'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of SocketTimeout object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of SocketTimeout object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of SocketTimeout object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of SocketTimeout object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of SocketTimeout object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of SocketTimeout object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of SocketTimeout object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of SocketTimeout object>'
+p35
+sS'__class__'
+p36
+S"<class 'gluon.rocket.SocketTimeout'>"
+p37
+sS'__doc__'
+p38
+S"'Exception for when a socket times out between requests.'"
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of SocketTimeout object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of SocketTimeout object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of SocketTimeout object>"
+p45
+sS'args'
+p46
+S"('Socket timed out before request.',)"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of SocketTimeout object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of SocketTimeout object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of SocketTimeout object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of SocketTimeout object>"
+p57
+ssS'evalue'
+p58
+S'Socket timed out before request.'
+p59
+sS'frames'
+p60
+(lp61
+(dp62
+S'file'
+p63
+S'c:\\web2py\\web2py\\gluon\\rocket.py'
+p64
+sS'dump'
+p65
+(dp66
+S'self'
+p67
+S'<WSGIWorker(Thread-24, started daemon 5648)>'
+p68
+sS'conn'
+p69
+S'<gluon.rocket.Connection object>'
+p70
+sS'self.run_app'
+p71
+S'<bound method WSGIWorker.run_app of <WSGIWorker(Thread-24, started daemon 5648)>>'
+p72
+ssS'lnum'
+p73
+I1337
+sS'lines'
+p74
+(dp75
+I1332
+S'            # Enter connection serve loop'
+p76
+sI1333
+S'            while True:'
+p77
+sI1334
+S'                if __debug__:'
+p78
+sI1335
+S"                    self.err_log.debug('Serving a request')"
+p79
+sI1336
+S'                try:'
+p80
+sI1337
+S'                    self.run_app(conn)'
+p81
+sI1338
+S'                except:'
+p82
+sI1339
+S'                    exc = sys.exc_info()'
+p83
+sI1340
+S'                    handled = self._handleError(*exc)'
+p84
+sI1341
+S'                    if handled:'
+p85
+ssS'call'
+p86
+S'(self=<WSGIWorker(Thread-24, started daemon 5648)>)'
+p87
+sS'func'
+p88
+S'run'
+p89
+sa(dp90
+g63
+S'c:\\web2py\\web2py\\gluon\\rocket.py'
+p91
+sg65
+(dp92
+S'self'
+p93
+S'<WSGIWorker(Thread-24, started daemon 5648)>'
+p94
+sS'self.environ'
+p95
+S'{\'HTTP_ACCEPT\': \'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\', \'HTTP_ACCEPT_ENCODING\': \'gzip, deflate, sdch, br\', \'HTTP_ACCEPT_LANGUAGE\': \'en-US,en;q=0.8\', \'HTTP_CACHE_CONTROL\': \'max-age=0\', \'HTTP_CONNECTION\': \'keep-alive\', \'HTTP_COOKIE\': \'session_id_hw2="7:d7edb6ba-8d34-46e8-af0c-cf2c15...po=127.0.0.1-47a5cdb0-7211-4075-a125-0131d7babe7e\', \'HTTP_HOST\': \'127.0.0.1:8000\', \'HTTP_UPGRADE_INSECURE_REQUESTS\': \'1\', \'HTTP_USER_AGENT\': \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleW...ML, like Gecko) Chrome/54.0.2840.71 Safari/537.36\', \'PATH_INFO\': \'/user/login\', ...}'
+p96
+sS'sock_file'
+p97
+S'<socket._fileobject object>'
+p98
+sS'environ'
+p99
+S'undefined'
+p100
+sS'self.build_environ'
+p101
+S'<bound method WSGIWorker.build_environ of <WSGIWorker(Thread-24, started daemon 5648)>>'
+p102
+sS'conn'
+p103
+S'<gluon.rocket.Connection object>'
+p104
+ssg73
+I1830
+sg74
+(dp105
+I1825
+S'        else:'
+p106
+sI1826
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p107
+sI1827
+S''
+sI1828
+S'        try:'
+p108
+sI1829
+S'            # Read the headers and build our WSGI environment'
+p109
+sI1830
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p110
+sI1831
+S''
+sI1832
+S'            # Handle 100 Continue'
+p111
+sI1833
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p112
+sI1834
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p113
+ssg86
+S'(self=<WSGIWorker(Thread-24, started daemon 5648)>, conn=<gluon.rocket.Connection object>)'
+p114
+sg88
+S'run_app'
+p115
+sa(dp116
+g63
+S'c:\\web2py\\web2py\\gluon\\rocket.py'
+p117
+sg65
+(dp118
+S'sock_file'
+p119
+S'<socket._fileobject object>'
+p120
+sS'self.read_request_line'
+p121
+S'<bound method WSGIWorker.read_request_line of <WSGIWorker(Thread-24, started daemon 5648)>>'
+p122
+sS'self'
+p123
+S'<WSGIWorker(Thread-24, started daemon 5648)>'
+p124
+sS'request'
+p125
+g100
+ssg73
+I1650
+sg74
+(dp126
+I1645
+S'                                      "wsgiorg.futures": executor.futures})'
+p127
+sI1646
+S''
+sI1647
+S'    def build_environ(self, sock_file, conn):'
+p128
+sI1648
+S'        """ Build the execution environment. """'
+p129
+sI1649
+S'        # Grab the request line'
+p130
+sI1650
+S'        request = self.read_request_line(sock_file)'
+p131
+sI1651
+S''
+sI1652
+S'        # Copy the Base Environment'
+p132
+sI1653
+S'        environ = self.base_environ.copy()'
+p133
+sI1654
+S''
+ssg86
+S'(self=<WSGIWorker(Thread-24, started daemon 5648)>, sock_file=<socket._fileobject object>, conn=<gluon.rocket.Connection object>)'
+p134
+sg88
+S'build_environ'
+p135
+sa(dp136
+g63
+S'c:\\web2py\\web2py\\gluon\\rocket.py'
+p137
+sg65
+(dp138
+S'global SocketTimeout'
+p139
+S"<class 'gluon.rocket.SocketTimeout'>"
+p140
+ssg73
+I1401
+sg74
+(dp141
+I1396
+S''
+sI1397
+S'                d = sock_file.readline()'
+p142
+sI1398
+S'                if PY3K:'
+p143
+sI1399
+S"                    d = d.decode('ISO-8859-1')"
+p144
+sI1400
+S'        except socket.timeout:'
+p145
+sI1401
+S"            raise SocketTimeout('Socket timed out before request.')"
+p146
+sI1402
+S'        except TypeError:'
+p147
+sI1403
+S'            raise SocketClosed('
+p148
+sI1404
+S"                'SSL bug caused closure of socket.  See '"
+p149
+sI1405
+S'                \'"https://groups.google.com/d/topic/web2py/P_Gw0JxWzCs".\')'
+p150
+ssg86
+S'(self=<WSGIWorker(Thread-24, started daemon 5648)>, sock_file=<socket._fileobject object>)'
+p151
+sg88
+S'read_request_line'
+p152
+sasS'pyver'
+p153
+S'Python 2.7.12: C:\\Users\\bhouts\\Anaconda2\\python.exe (prefix: C:\\Users\\bhouts\\Anaconda2)'
+p154
+sS'etype'
+p155
+S"<class 'gluon.rocket.SocketTimeout'>"
+p156
+sS'date'
+p157
+S'Thu Oct 27 20:03:42 2016'
+p158
+sS'locals'
+p159
+(dp160
+S'sock_file'
+p161
+S'<socket._fileobject object>'
+p162
+sS'self'
+p163
+S'<WSGIWorker(Thread-24, started daemon 5648)>'
+p164
+sssS'traceback'
+p165
+S'Traceback (most recent call last):\n  File "c:\\web2py\\web2py\\gluon\\rocket.py", line 1337, in run\n    self.run_app(conn)\n  File "c:\\web2py\\web2py\\gluon\\rocket.py", line 1830, in run_app\n    self.environ = environ = self.build_environ(sock_file, conn)\n  File "c:\\web2py\\web2py\\gluon\\rocket.py", line 1650, in build_environ\n    request = self.read_request_line(sock_file)\n  File "c:\\web2py\\web2py\\gluon\\rocket.py", line 1401, in read_request_line\n    raise SocketTimeout(\'Socket timed out before request.\')\nSocketTimeout: Socket timed out before request.\n'
+p166
+s.
