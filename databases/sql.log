@@ -53,3 +53,13 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
+timestamp: 2016-10-27T09:00:48.230567
+CREATE TABLE tel(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    ra TEXT,
+    decl TEXT,
+    rad TEXT,
+    cat CHAR(512)
+);
+success!
