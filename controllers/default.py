@@ -9,6 +9,7 @@
 # -------------------------------------------------------------------------
 
 
+@auth.requires_login()
 def index():
     """
     example action using the internationalization operator T and flash
@@ -19,6 +20,10 @@ def index():
     """
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
+
+
+def onetime():
+    return dict();
 
 
 def user():
@@ -38,7 +43,6 @@ def user():
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
     return dict(form=auth())
-
 
 def search():
     return dict(list=[])

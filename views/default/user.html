@@ -12,6 +12,7 @@
             if not 'register' in auth.settings.actions_disabled:
                 form.add_button(T('Sign Up'),URL(args='register', vars={'_next': request.vars._next} if request.vars._next else None),_class='btn btn-default')
             pass
+            form.add_button(T('One-time User'), URL(args='../onetime'))
             if not 'request_reset_password' in auth.settings.actions_disabled:
                 form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
             pass
