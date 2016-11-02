@@ -6,44 +6,48 @@
     </head> 
 
     <body>
-        <div class = nav_top_right>
-            <button type="button" onclick="show_hide()">
-                <i class='fa fa-bars'></i>
-            </button>
-            <div id="extend_menu"> 
-                {{if log_out == True:}}
-                    <div><a href="{{=URL('default', 'user')}}" >Login</a></div>
-                    <div><a href="{{=URL('default', 'user/register')}}" >Sign Up</a></div>
-                {{else:}}
-                    <div><a href="{{=URL('default', 'index', args=['logout'])}}" >Logout</a></div>
-                {{pass}}
+            <div class = nav_top_right>
+                <button type="button" onclick="show_hide()">
+                    <i class='fa fa-bars'></i>
+                </button>
+                <div id="extend_menu"> 
+                    {{if log_out == True:}}
+                        <div><a href="{{=URL('default', 'user')}}" >Login</a></div>
+                        <div><a href="{{=URL('default', 'user/register')}}" >Sign Up</a></div>
+                    {{else:}}
+                        <div><a href="{{=URL('default', 'index', args=['logout'])}}" >Logout</a></div>
+                    {{pass}}
+                </div>
+            </div>    
+            <div class="modal">
+                <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                    <input class="input" type="text" name="name" placeholder="Target Name"/>
+                    <input class="input" type="text" name="ra" placeholder="RA: hh mm ss"/>
+                    <input class="input" type="text" name="decl" placeholder="DEC: dd mm"/>
+                    <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
+                    <select class="input" name="cat">
+                        <option disabled="disabled" selected>Catalog...</option>
+                        <option value="nasa">USNO-B1</option>
+                        <option value="nasa">GSC</option>
+                        <option value="huston">NOMAD</option>
+                        <option value="new">UCAC</option>
+                    </select>
+                    <input class="button" type="submit" value="Submit"/>
+                </form>
             </div>
-        <div>    
-        <div class="modal">
-            <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-                <input class="input" type="text" name="name" placeholder="Target Name"/>
-                <input class="input" type="text" name="ra" placeholder="RA: hh mm ss"/>
-                <input class="input" type="text" name="decl" placeholder="DEC: dd mm"/>
-                <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
-                <select class="input" name="cat">
-                    <option disabled="disabled" selected>Catalog...</option>
-                    <option value="nasa">USNO-B1</option>
-                    <option value="nasa">GSC</option>
-                    <option value="huston">NOMAD</option>
-                    <option value="new">UCAC</option>
-                </select>
-                <input class="button" type="submit" value="Submit"/>
-            </form>
-        </div>
-        <script type="text/javascript">
-            function show_hide() {
-                if (document.getElementById("extend_menu").style.display == 'none') {
-                    document.getElementById("extend_menu").style.display = 'block'; 
-                }else{
-                    document.getElementById("extend_menu").style.display = 'none'; 
-                }
-            };
 
-        </script>
+            <div id = "test">
+                Boom
+            </div>
+            <script type="text/javascript">
+                function show_hide() {
+                    if (document.getElementById("extend_menu").style.display == 'none') {
+                        document.getElementById("extend_menu").style.display = 'block'; 
+                    }else{
+                        document.getElementById("extend_menu").style.display = 'none'; 
+                    }
+                };
+
+            </script>
     </body>
 </html>

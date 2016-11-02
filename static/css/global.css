@@ -1,5 +1,6 @@
-body{
-    background-color: white;
+body {
+    background-image: url('static/images/home_back.jpg');
+    background-color: #cccccc;
 }
 
 body * {
@@ -88,3 +89,8 @@ body * {
     z-index: 999; /* or  greater value */
 }
 
+#test{
+    height: 200px;
+    width: 300px;
+    background: rgba(0,5,0,0.1);
+}
