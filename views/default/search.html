@@ -15,13 +15,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                    <td>IDK</td>
-                </tr>
+                {{for entry in dict:}}
+                    <tr>
+                        <td>NA</td>
+                        <td>{{=dict[entry]['RA']}}</td>
+                        <td>{{=dict[entry]['DEC']}}</td>
+                        <td>{{=dict[entry]['mag']}}</td>
+                    </tr>
+                {{pass}}
             </tbody>
         </table>
+        <div>
+        </div>
     </body>
 </html>
