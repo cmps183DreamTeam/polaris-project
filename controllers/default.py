@@ -39,6 +39,18 @@ def index():
     #     return dict(form = form)
     return dict()
 
+# NOMAD # ['_RAJ2000', '_DEJ2000', '_r', 'NOMAD1', 'USNO-B1', 'UCAC2', 'Tycho-2', 'f_Tycho-2', 'YM', 'RAJ2000', 'DEJ2000', 'r', 'e_RAJ2000', 'e_DEJ2000', 'pmRA', 'e_pmRA', 'pmDE', 'e_pmDE', 'Bmag', 'r_Bmag', 'Vmag', 'r_Vmag', 'Rmag', 'r_Rmag', 'Jmag', 'Hmag', 'Kmag', 'Xflags', 'R']
+# UCAC # ['_RAJ2000', '_DEJ2000', '_r', 'UCAC4', 'RAJ2000', 'e_RAJ2000', 'DEJ2000', 'e_DEJ2000', 'ePos', 'EpRA', 'EpDE', 'f.mag', 'a.mag', 'e_a.mag', 'of', 'db', 'Na', 'Nu', 'Nc', 'pmRA', 'e_pmRA', 'pmDE', 'e_pmDE', 'MPOS1', 'UCAC2', 'Tycho-2', '_2Mkey', 'Jmag', 'e_Jmag', 'q_Jmag', 'Hmag', 'e_Hmag', 'q_Hmag', 'Kmag', 'e_Kmag', 'q_Kmag', 'Bmag', 'e_Bmag', 'f_Bmag', 'Vmag', 'e_Vmag', 'f_Vmag', 'gmag', 'e_gmag', 'f_gmag', 'rmag', 'e_rmag', 'f_rmag', 'imag', 'e_imag', 'f_imag', 'g', 'c', 'H', 'A', 'b', 'h', 'Z', 'B', 'L', 'N', 'S', 'LEDA', '_2MX']
+# GSC # ['_RAJ2000', '_DEJ2000', '_r', 'GSC', 'RAJ2000', 'DEJ2000', 'PosErr', 'Pmag', 'e_Pmag', 'n_Pmag', 'Class', 'Plate', 'Epoch', 'Mult', 'Versions']
+# USNO-B1 # ['_RAJ2000', '_DEJ2000', '_r', 'USNO-B1.0', 'Tycho-2', 'RAJ2000', 'DEJ2000', 'e_RAJ2000', 'e_DEJ2000', 'Epoch', 'pmRA', 'pmDE', 'muPr', 'e_pmRA', 'e_pmDE', 'fit_RA', 'fit_DE', 'Ndet', 'Flags', 'B1mag', 'B1C', 'B1S', 'B1f', 'B1s_g', 'B1xi', 'B1eta', 'R1mag', 'R1C', 'R1S', 'R1f', 'R1s_g', 'R1xi', 'R1eta', 'B2mag', 'B2C', 'B2S', 'B2f', 'B2s_g', 'B2xi', 'B2eta', 'R2mag', 'R2C', 'R2S', 'R2f', 'R2s_g', 'R2xi', 'R2eta', 'Imag', 'IC', 'IS', 'If', 'Is_g', 'Ixi', 'Ieta']
+def mag_key(catalog):
+    return {
+        'NOMAD': 'Vmag',
+        'UCAC': 'Vmag',
+        'GSC': 'Pmag',
+        'USNO-B1': 'R1mag',
+    }[catalog]
+
 def test():
     redirect(URL('default', 'index'))
     response.flash = T(request.vars.name)
@@ -89,15 +101,22 @@ def find_guides(target, cat, rad):
     #     #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
     #     dict[x] = col
     i = 0
-    for row in (result[0]):
-        #create list with RA, DEC, mag values
+    if len(result) > 0:
+        for row in (result[0]):
+            #create list with RA, DEC, mag values
+            col_list = {}
+            col_list['RA'] = float(row['_RAJ2000'])
+            col_list['DEC'] = float(row['_DEJ2000'])
+            col_list['mag'] = float(row[mag_key(cat)])
+            #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
+            dict[i] = col_list
+            i = i + 1
+    else:
         col_list = {}
-        col_list['RA'] = float(row['_RAJ2000'])
-        col_list['DEC'] = float(row['_DEJ2000'])
-        col_list['mag'] = float(row['Vmag'])
-        #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
-        dict[i] = col_list
-        i = i + 1
+        col_list['RA'] = float(0)
+        col_list['DEC'] = float(0)
+        col_list['mag'] = float(0)
+        dict[0] = col_list
     return dict
 
 # def search():
@@ -136,9 +155,10 @@ def find_guides(target, cat, rad):
 
 def search():
     in_ra = request.vars.ra
-    in_dec = request.vars.decl
+    in_dec = request.vars.dec
     in_rad = request.vars.rad
-    in_cat = request.vars.cat
+    #in_cat = request.vars.cat
+    in_cat = "GSC" if (request.vars.cat) is None else (request.vars.cat)
     #call function to get coordinates
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
