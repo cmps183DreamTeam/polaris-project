@@ -5,27 +5,46 @@
     </head>
     <body>
         <a class="back-button" href="{{=URL('default','index')}}">Back</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>RA</td>
-                    <td>DEC</td>
-                    <td>Magnitude</td>
-                </tr>
-            </thead>
-            <tbody>
-                {{for entry in dict:}}
+
+        <div id="input-form" class="form-modal">
+            <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                <input class="input" type="text" name="name" placeholder="Target Name:{{=reqs.name}}">
+                <input class="input" type="text" name="ra" placeholder=RA:{{=reqs.ra}}>
+                <input class="input" type="text" name="dec" placeholder="DEC:{{=reqs.dec}}">
+                <input class="input" type="text" name="rad" placeholder="Radius:{{=reqs.rad}}"/>
+
+                <select class="input" name="cat">
+                    <option disabled="disabled" selected>Catalog...</option>
+                    <option value="USNO-B1">USNO-B1</option>
+                    <option value="GSC">GSC</option>
+                    <option value="NOMAD">NOMAD</option>
+                    <option value="UCAC">UCAC</option>
+                </select>
+                <input class="button" type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div id="results-table">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>NA</td>
-                        <td>{{=dict[entry]['RA']}}</td>
-                        <td>{{=dict[entry]['DEC']}}</td>
-                        <td>{{=dict[entry]['mag']}}</td>
+                        <td>Name</td>
+                        <td>RA</td>
+                        <td>DEC</td>
+                        <td>Magnitude</td>
                     </tr>
-                {{pass}}
-            </tbody>
-        </table>
-        <div>
+                </thead>
+                <tbody>
+                    {{for entry in dict:}}
+                        <tr>
+                            <td id="name">{{=reqs.name}}</td>
+                            <td id="ra">{{=dict[entry]['RA']}}</td>
+                            <td id="dec">{{=dict[entry]['DEC']}}</td>
+                            <td id="magnitude">{{=dict[entry]['mag']}}</td>
+                        </tr>
+                    {{pass}}
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
