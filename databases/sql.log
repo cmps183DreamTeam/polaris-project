@@ -63,3 +63,13 @@ CREATE TABLE tel(
     cat CHAR(512)
 );
 success!
+timestamp: 2016-11-10T01:39:03.036574
+CREATE TABLE queries(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    ra TEXT,
+    decl TEXT,
+    rad TEXT,
+    cat CHAR(512)
+);
+success!

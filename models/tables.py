@@ -7,7 +7,7 @@
 # There is an implicit 'id integer autoincrement' field
 # Consult manual for more options, validators, etc.
 import datetime
-db.define_table('tel',
+db.define_table('queries',
                 Field('name', 'text'),
                 Field('ra', 'text'),
                 Field('decl', 'text'),

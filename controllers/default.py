@@ -100,11 +100,28 @@ def search():
     in_rad = request.vars.rad
     #in_cat = request.vars.cat
     in_cat = 'USNO-B1' if (request.vars.cat) is None else (request.vars.cat)
+    in_cat = 'USNO-B1'
     #call function to get coordinates
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
     return dict(dict = call_dict, reqs=request.vars)
+
+def save_query():
+    #in_ra = request.vars.ra
+    #in_dec = request.vars.dec
+    #in_rad = request.vars.rad
+    #
+    #form = SQLFORM(db.post).process()
+    ## Add controls
+    #form.add_button("Cancel", URL('default', 'index'))
+    ## If all-correct perform edit, redirect home
+    #if form.process().accepted:
+    #    session.flash = 'new record inserted'
+    #    redirect(URL('default', 'index'))
+    #elif form.errors:
+    #    session.flash = T("Can't process those values.")
+    return
 
 @cache.action()
 def download():
