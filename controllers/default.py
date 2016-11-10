@@ -163,7 +163,7 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    return dict(dict = call_dict)
+    return dict(dict = call_dict, reqs=request.vars)
 
 @cache.action()
 def download():

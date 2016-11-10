@@ -2,20 +2,25 @@
 {{block head}}
 <link rel="stylesheet" href="{{=URL('static','css/global.css')}}"/>
 {{end head}}
-<div class="form-modal">
+<div id="input-form" class="form-modal">
     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
         <input class="input" type="text" name="name" placeholder="Target Name">
         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
         <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
         <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
 
-        <select class="input" name="cat">
-            <option disabled="disabled" selected>Catalog...</option>
-            <option value="USNO-B1">USNO-B1</option>
-            <option value="GSC">GSC</option>
-            <option value="NOMAD">NOMAD</option>
-            <option value="UCAC">UCAC</option>
-        </select>
+        {{if auth.user_id:}}
+            <select class="input" name="cat">
+                <option disabled="disabled" selected>Catalog...</option>
+                <option value="USNO-B1">USNO-B1</option>
+                <option value="GSC">GSC</option>
+                <option value="NOMAD">NOMAD</option>
+                <option value="UCAC">UCAC</option>
+            </select>
+        {{pass}}
+        {{if not auth.user_id:}}
+            <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+        {{pass}}
         <input class="button" type="submit" value="Submit">
     </form>
 </div>

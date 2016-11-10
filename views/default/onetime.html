@@ -2,7 +2,7 @@
 {{block head}}
 <link rel="stylesheet" href="{{=URL('static','css/global.css')}}"/>
 {{end head}}
-<div class="form-modal">
+<div id="input-form" class="form-modal">
     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
         <input class="input" type="text" name="name" placeholder="Target Name">
         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
