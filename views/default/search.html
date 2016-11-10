@@ -25,7 +25,22 @@
                 {{pass}}
             </tbody>
         </table>
-        <div>
+        <div class="form-modal">
+            <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                <input class="input" type="text" name="name" placeholder="Target Name">
+                <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
+                <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
+                <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
+
+                <select class="input" name="cat">
+                    <option disabled="disabled" selected>Catalog...</option>
+                    <option value="USNO-B1">USNO-B1</option>
+                    <option value="GSC">GSC</option>
+                    <option value="NOMAD">NOMAD</option>
+                    <option value="UCAC">UCAC</option>
+                </select>
+                <input class="button" type="submit" value="Submit">
+            </form>
         </div>
     </body>
 </html>
