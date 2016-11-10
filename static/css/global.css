@@ -43,7 +43,7 @@ body * {
 .form-modal {
     width: 350px;
     padding: 20px;
-    margin: 150px auto 20px;
+    margin: 10% 5px 15px;
     border: solid 2px rgba(0,0,0,0.1);
     border-radius: 6px;
 }
@@ -100,11 +100,18 @@ html, body {
 }
 
 #user-input {
-    width: 45%;
+    width: 40%;
     float: left;
 }
 
 #input-form {
-    width: 45%;
+    width: 40%;
     float: left;
 }
+
+button#save_query_button {
+    margin-right: 10%;
+    float: right;
+}
+
+

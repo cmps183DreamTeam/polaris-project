@@ -2,6 +2,13 @@
     <head>
         <title>Search</title>
         <link href = "{{=URL('static','css/global.css')}}" type ="text/css" rel="stylesheet">
+        <script src="{{=URL('static', 'js/vue.js')}}"></script>
+        <script>
+            var posts_url = "{{=URL('default', 'get_posts')}}";
+            var add_post_url = "{{=URL('default', 'add_post', user_signature=True)}}";
+            var edit_post_url = "{{=URL('default', 'edit_post', user_signature=True)}}";
+            var del_post_url = "{{=URL('default', 'del_post', user_signature=True)}}";
+        </script>
     </head>
     <body>
         <a class="back-button" href="{{=URL('default','index')}}">Back</a>
@@ -47,6 +54,6 @@
             </table>
         </div>
 
-        <a class="button" href="{{=URL('default','save_query', user_signature=True)}}">Save this query</a>
+        <button id="save_query_button" class="button" align="right" href="{{=URL('default','save_query', user_signature=True)}}">Save this query</button>
     </body>
 </html>
