@@ -7,6 +7,7 @@
 # - user is required for authentication and authorization
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
+testvar = None
 
 def index():
     """
@@ -137,7 +138,44 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    return dict(dict = call_dict)
+
+    # import json
+    # json_str = json.dumps(call_dict)
+
+    # testvar = call_dict
+    # setVar()
+    # testvar = 1
+    #data(json_str)
+
+    return dict(dict=call_dict)
+    # json_str = json.dumps(call_dict)
+    # return response.json(json_str)
+
+
+
+# def setVar():
+#     testvar = 3
+#     return
+
+
+
+def data():
+    in_ra = request.vars.ra
+    in_dec = request.vars.decl
+    in_rad = request.vars.rad
+    in_cat = request.vars.cat
+    #call function to get coordinates
+    cVega = celestial_target(in_ra, in_dec)
+    #call find_guides
+    call_dict = find_guides(cVega, in_cat, in_rad)
+
+    # IMPLEMENTED JSON
+    import json
+    json_str = json.dumps(call_dict)
+
+    # x = [3, 4, 5, 6]
+    return json_str
+
 
 @cache.action()
 def download():
