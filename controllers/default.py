@@ -82,10 +82,10 @@ def find_guides(target, cat, rad):
             #dict[1] will hold which magnitude we return
             if (row['R1mag']) is not None:
                 col_list['mag'] = float(row['R1mag'])
-                mag_type = 'R1mag'
+                mag_type = '1st'
             elif (row['R2mag']) is not None:
                 col_list['mag'] = float(row['R2mag'])
-                mag_type = 'R2mag'
+                mag_type = '2nd'
             else:
                 col_list['mag'] = '-'
                 #mag_type already intiated "None"
