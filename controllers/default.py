@@ -71,6 +71,7 @@ def find_guides(target, cat, rad):
     result = Vizier.query_region(target, radius=rad, catalog=cat)
     dict = {}
     i = 0
+    mag_type = 'None'
     if len(result) > 0:
         for row in (result[0]):
             #create list with RA, DEC, mag values
@@ -78,20 +79,26 @@ def find_guides(target, cat, rad):
             col_list['RA'] = float(row['_RAJ2000'])
             col_list['DEC'] = float(row['_DEJ2000'])
             #col_list['mag'] = float(row[mag_key(cat)])#R1mag
+            #dict[1] will hold which magnitude we return
             if (row['R1mag']) is not None:
                 col_list['mag'] = float(row['R1mag'])
+                mag_type = 'R1mag'
             elif (row['R2mag']) is not None:
                 col_list['mag'] = float(row['R2mag'])
+                mag_type = 'R2mag'
             else:
                 col_list['mag'] = '-'
+                #mag_type already intiated "None"
             dict[i] = col_list
-            i = i + 1
+            i = i + 1 
     else:
         col_list = {}
         col_list['RA'] = float(0)
         col_list['DEC'] = float(0)
         col_list['mag'] = float(0)
+        #mag_type already intiated "None"
         dict[0] = col_list
+    col_list['mag_type'] = mag_type   #initiated as "None", changes if an R1 or R2 value
     return dict
 
 def search():
