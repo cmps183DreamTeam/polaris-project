@@ -18,9 +18,7 @@
                 <option value="UCAC">UCAC</option>
             </select>
         {{pass}}
-        {{if not auth.user_id:}}
-            <a class="back-button" href="{{=URL('default','index')}}">Back</a>
-        {{pass}}
+        
         <input class="button" type="submit" value="Submit">
     </form>
 </div>

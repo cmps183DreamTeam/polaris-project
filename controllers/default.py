@@ -8,7 +8,6 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 
-@auth.requires_login()
 def index():
     """
     example action using the internationalization operator T and flash
@@ -55,10 +54,6 @@ def test():
     redirect(URL('default', 'index'))
     response.flash = T(request.vars.name)
     return dict(name=request.vars.name)
-
-
-def onetime():
-    return dict();
 
 
 def user():
