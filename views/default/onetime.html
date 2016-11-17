@@ -4,7 +4,7 @@
 {{end head}}
 <div id="input-form" class="form-modal">
     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-        <input class="input" type="text" name="name" placeholder="Target Name">
+        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name">
         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
         <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
         <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>

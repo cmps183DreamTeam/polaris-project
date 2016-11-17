@@ -33,6 +33,20 @@ def find_guides(target, cat, rad):
         dict[0] = col_list
     return dict
 
+def GET():
+    #request.arg[0]
+    return response.json([request.arg[0], {'bar': ('baz', None, 1.0, 2)}])
+
+#def GET():
+#    from astroquery.vizier import Vizier
+#    from astropy.coordinates import Angle
+#    #request.arg[0]
+#    #request.vars[0]
+#
+#
+#   return response.json([request.arg[0], {'bar': ('baz', None, 1.0, 2)}])
+
+
 def search():
     in_ra = request.vars.ra
     in_dec = request.vars.dec
