@@ -113,6 +113,16 @@ def search():
     call_dict = find_guides(cVega, in_cat, in_rad)
     return dict(dict = call_dict, reqs=request.vars)
 
+def aprox_strehl():
+    import math
+    wavelength_reference = '0.5 mu' #micrometer #500nm
+    theta_const = '10arcsec'    #10s
+    theta_const_by_wavelength = theta_const*(wavelength_reference)*pow((wavelength/wavelength_reference), 5/6)
+    sima_pow_2 = pow((theta_const_by_wavelength/theta_const), 5/3)
+    strehl = pow(math.e, -sima_pow_2)
+    #NGS
+    return strehl
+
 def save_query():
     #in_ra = request.vars.ra
     #in_dec = request.vars.dec
