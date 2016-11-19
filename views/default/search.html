@@ -38,8 +38,13 @@
     </head>
     <body>
         <div id="fullpage">
-            <!--0nd section-->
+            <!--1st section-->
             <div class="section">
+                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
+                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
+                </div>
+
                 <div id='container'></div>
                 <div id='highlighted'>Nothing Highlighted</div>
                 <div id='selected'>Nothing Selected</div>
@@ -80,39 +85,6 @@
                     });
 
                 </script>
-            </div>
-
-            <!--1st old style (python generated table) section-->
-            <div class="section">
-                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
-
-                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
-                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
-                </div>
-                <div id="results-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <!--<td>Name</td>-->
-                                <td>RA</td>
-                                <td>DEC</td>
-                                <td>Magnitude</td>
-                                <td>Epoch Red Mag</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{for entry in dict:}}
-                                <tr>
-                                    <!--<td id="name">{{=reqs.name}}</td>-->
-                                    <td id="ra">{{=entry['RA']}}</td>
-                                    <td id="dec">{{=entry['DEC']}}</td>
-                                    <td id="magnitude">{{=entry['mag']}}</td>
-                                    <td id="magnitude_type">{{=entry['mag_type']}}</td>
-                                </tr>
-                            {{pass}}
-                        </tbody>
-                    </table>
-                </div>
                 <button style="background-color: white; border-color: lightgrey; border-width: inherit;"
                         id="save_query_button" class="button" align="right"
                         href="{{=URL('default','save_query', user_signature=True)}}">
