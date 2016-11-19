@@ -3,6 +3,31 @@
         <title>Search</title>
         <link href = "{{=URL('static','css/global.css')}}" type ="text/css" rel="stylesheet">
         <script src="{{=URL('static', 'js/vue.js')}}"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+        <!-- Sources for D3 table -->
+        <script src="{{=URL('static', 'js/makeTable.js')}}"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+
+
+        <!-- One page website -->
+        <link href = "{{=URL('static','css/jquery.fullPage.css')}}" rel="stylesheet" type="text/css">
+        <script src="{{=URL('static', 'js/jquery.easings.min.js')}}"></script>
+        <script src="{{=URL('static', 'js/jquery.fullPage.min.js')}}"></script>
+
+        <!-- One page script function -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#fullpage').fullpage({
+                    sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
+                });
+            });
+        </script>
+
         <script>
             var posts_url = "{{=URL('default', 'get_posts')}}";
             var add_post_url = "{{=URL('default', 'add_post', user_signature=True)}}";
@@ -10,49 +35,89 @@
             var del_post_url = "{{=URL('default', 'del_post', user_signature=True)}}";
         </script>
     </head>
+
     <body>
-        <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+        <div id="fullpage">
+            <div class="section">
 
-        <div id="input-form" class="form-modal">
-            <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-                <input class="input" type="text" name="name" placeholder="Target Name:{{=reqs.name}}">
-                <input class="input" type="text" name="ra" placeholder=RA:{{=reqs.ra}}>
-                <input class="input" type="text" name="dec" placeholder="DEC:{{=reqs.dec}}">
-                <input class="input" type="text" name="rad" placeholder="Radius:{{=reqs.rad}}"/>
+                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
 
-                <select class="input" name="cat">
-                    <option disabled="disabled" selected>Catalog...</option>
-                    <option value="USNO-B1">USNO-B1</option>
-                    <option value="GSC">GSC</option>
-                    <option value="NOMAD">NOMAD</option>
-                    <option value="UCAC">UCAC</option>
-                </select>
-                <input class="button" type="submit" value="Submit">
-            </form>
+                <div id='container'></div>
+                <div id='highlighted'>Nothing Highlighted</div>
+                <div id='selected'>Nothing Selected</div>
+
+
+                <script>
+                    var json_str = '{{=XML(json_dict)}}';
+
+                    console.log(json_str);
+
+
+                    var arr = JSON.parse(json_str);
+                    console.log(arr);
+
+
+                    var table_plot = makeTable()
+                      .datum(arr)
+                      .sortBy('mag', true)
+
+                    d3.select('#container').call(table_plot);
+
+                    table_plot.on('highlight', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                           d3.select('#highlighted').text('Mouse on row '  + data.GeneID);
+                      }
+                    });
+
+                    table_plot.on('select', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                        d3.select('#selected').text(
+                          'Last clicked row was ' + data.GeneID
+                        );
+                      }
+                    });
+
+                </script>
+
+
+            </div>
+
+
+
+
+            <div class="section">
+
+                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+
+                <div id="input-form" class="form-modal">
+                    <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                        <input class="input" type="text" name="name" placeholder="Target Name:{{=reqs.name}}">
+                        <input class="input" type="text" name="ra" placeholder=RA:{{=reqs.ra}}>
+                        <input class="input" type="text" name="dec" placeholder="DEC:{{=reqs.dec}}">
+                        <input class="input" type="text" name="rad" placeholder="Radius:{{=reqs.rad}}"/>
+
+                        <select class="input" name="cat">
+                            <option disabled="disabled" selected>Catalog...</option>
+                            <option value="USNO-B1">USNO-B1</option>
+                            <option value="GSC">GSC</option>
+                            <option value="NOMAD">NOMAD</option>
+                            <option value="UCAC">UCAC</option>
+                        </select>
+                        <input class="button" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+
         </div>
 
-        <div id="results-table">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>RA</td>
-                        <td>DEC</td>
-                        <td>Magnitude</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{for entry in dict:}}
-                        <tr>
-                            <td id="name">{{=reqs.name}}</td>
-                            <td id="ra">{{=dict[entry]['RA']}}</td>
-                            <td id="dec">{{=dict[entry]['DEC']}}</td>
-                            <td id="magnitude">{{=dict[entry]['mag']}}</td>
-                        </tr>
-                    {{pass}}
-                </tbody>
-            </table>
-        </div>
+
+
 
         <button id="save_query_button" class="button" align="right" href="{{=URL('default','save_query', user_signature=True)}}">Save this query</button>
     </body>

@@ -69,9 +69,10 @@ def find_guides(target, cat, rad):
     from astroquery.vizier import Vizier
     from astropy.coordinates import Angle
     result = Vizier.query_region(target, radius=rad, catalog=cat)
-    dict = {}
+    dict = []
     i = 0
     if len(result) > 0:
+        print("find_guides: if len...:")
         for row in (result[0]):
             #create list with RA, DEC, mag values
             col_list = {}
@@ -84,14 +85,16 @@ def find_guides(target, cat, rad):
                 col_list['mag'] = float(row['R2mag'])
             else:
                 col_list['mag'] = '-'
-            dict[i] = col_list
+            dict.append(col_list)
             i = i + 1
     else:
+        print("find_guides: else: ")
         col_list = {}
         col_list['RA'] = float(0)
         col_list['DEC'] = float(0)
         col_list['mag'] = float(0)
-        dict[0] = col_list
+        dict.append(col_list)
+    print(dict)
     return dict
 
 def search():
@@ -105,7 +108,10 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    return dict(dict = call_dict, reqs=request.vars)
+
+    import json
+    json_str = json.dumps(call_dict)
+    return dict(json_dict=json_str, dict = call_dict, reqs=request.vars)
 
 def save_query():
     #in_ra = request.vars.ra
@@ -130,6 +136,8 @@ def download():
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
+
+
 
 
 def call():

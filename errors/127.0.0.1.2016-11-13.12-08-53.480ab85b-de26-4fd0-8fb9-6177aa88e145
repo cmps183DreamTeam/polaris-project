@@ -1,0 +1,830 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.TypeError'> 'NoneType' object is not iterable"
+p3
+sS'layer'
+p4
+S'/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/views/default/search.html'
+p5
+sS'code'
+p6
+S'response.write(\'<html>\\n    <head>\\n        <title>Search</title>\\n        <link href = "\', escape=False)\nresponse.write(URL(\'static\',\'css/global.css\'))\nresponse.write(\'" type ="text/css" rel="stylesheet">\\n        <script src="\', escape=False)\nresponse.write(URL(\'static\', \'js/vue.js\'))\nresponse.write(\'"></script>\\n\\n        <script src="\', escape=False)\nresponse.write(URL(\'static\', \'js/makeTable.js\'))\nresponse.write(\'"></script>\\n        <script type= "text/javascript" src="http://d3js.org/d3.v3.min.js"></script>\\n        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>\\n        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>\\n        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">\\n\\n        <script>\\n            var posts_url = "\', escape=False)\nresponse.write(URL(\'default\', \'get_posts\'))\nresponse.write(\'";\\n            var add_post_url = "\', escape=False)\nresponse.write(URL(\'default\', \'add_post\', user_signature=True))\nresponse.write(\'";\\n            var edit_post_url = "\', escape=False)\nresponse.write(URL(\'default\', \'edit_post\', user_signature=True))\nresponse.write(\'";\\n            var del_post_url = "\', escape=False)\nresponse.write(URL(\'default\', \'del_post\', user_signature=True))\nresponse.write(\'";\\n        </script>\\n    </head>\\n\\n\\n\\n\\n    <script>\\n        var json_str = \\\'\', escape=False)\nresponse.write(XML(json_dict))\nresponse.write(\'\\\';\\n        console.log(json_str);\\n        var obj = [];\\n\\n        var arr = JSON.parse(json_str);\\n\\n//        for(var i in arr)\\n//            obj.push(i, arr[i]);\\n\\n        console.log(arr);\\n\\n        var table_plot = makeTable()\\n                .datum(arr)\\n                .sortBy(\\\'pval\\\', true)\\n                .filterCols([\\\'col\\\', \\\'x\\\', \\\'y\\\']);\\n        d3.select(\\\'#container\\\').call(table_plot);\\n\\n\\n\\n//        function tabulate(data, columns)\\n//        {\\n//            data = json_str;\\n//            var table = d3.select(\\\'body\\\').append(\\\'table\\\');\\n//            var thead = table.append(\\\'thead\\\');\\n//            var tbody = table.append(\\\'tbody\\\');\\n//\\n//            // append the header row\\n//            thead.append(\\\'tr\\\')\\n//                    .selectAll(\\\'th\\\')\\n//                    .data(columns).enter()\\n//                    .append(\\\'th\\\')\\n//                    .text(function (column) { return column; });\\n//\\n//            // create a row for each object in the data\\n//            var rows = tbody.selectAll(\\\'tr\\\')\\n//                    .data(data)\\n//                    .enter()\\n//                    .append(\\\'tr\\\');\\n//\\n//            // create a cell in each row for each column\\n//            var cells = rows.selectAll(\\\'td\\\')\\n//                    .data(function (row)\\n//                    {\\n//                        return columns.map(function (column)\\n//                        {\\n//                            return {column: column, value: row[column]};\\n//                        });\\n//                    })\\n//                    .enter()\\n//                    .append(\\\'td\\\')\\n//                    .text(function (d) { return d.value; });\\n//\\n//                return table;\\n//\\n//\\n//            // render the table(s)\\n//            tabulate(data, [\\\'RA\\\', \\\'DEC\\\', \\\'mag\\\']); // 3 column table\\n//\\n//        };\\n\\n\\n\\n\\n\\n\\n            // onload\\n        //     var rows = document.getElementById("myTable").rows;\\n        //      for row in rows\\n        //         var magnitudeValue =  row[2].innterHTML;  row.(...magnitude..)\\n        //         row.setColor(magnitude_to_RGB(magnitudeValue))\\n        //\\n        // function magnitude_to_RGB(magnitudeValue){\\n        //\\n        //  return RGB\\n        //      }\\n        //\\n        //\\n        //\\n        //\\n        //\\n        //\\n        //\\n        //\\n        //\\n        // $(\\\'td\\\').hover(function()\\n        // {\\n        //     $(this).addClass(\\\'highlight_this_cell\\\');\\n        //     $(this).parent().addClass(\\\'highlight_tr\\\');\\n        //     $(this).parent().find(\\\'td\\\').addClass(\\\'highlight_td\\\');\\n        // },\\n        // function()\\n        // {\\n        //     $(this).removeClass(\\\'highlight_this_cell\\\');\\n        //     $(this).parent().removeClass(\\\'highlight_tr\\\');\\n        //     $(this).parent().find(\\\'td\\\').removeClass(\\\'highlight_td\\\');\\n        // }\\n        // );\\n        //\\n        //\\n        //\\n        //\\n        // $(document).ready(function()\\n        // {\\n        //     function class_for_data(t, blue_point, cyan_point, green_point, yellow_point, red_point, do_invert)\\n        //     {\\n        //         var blue = 0;\\n        //         var green = 0;\\n        //         var red = 0;\\n        //         var maxval = 90;\\n        //         if (t < blue_point) {\\n        //             blue = 255;\\n        //         } else if (blue_point <= t && t < cyan_point) {\\n        //             green = 255 * (t - blue_point) / (cyan_point - blue_point);\\n        //             blue = 255;\\n        //         } else if (cyan_point <= t && t < green_point) {\\n        //             blue = 255 * (green_point - t) / (green_point - cyan_point);\\n        //             green = 255;\\n        //         } else if (green_point <= t && t < yellow_point) {\\n        //             green = 255;\\n        //             red = 255 * (t - green_point) / (yellow_point - green_point);\\n        //         } else if (yellow_point <= t && t < red_point) {\\n        //             red = 255;\\n        //             green = 255 * (red_point - t) / (red_point - yellow_point);\\n        //         } else {\\n        //             red = 255;\\n        //         }\\n        //         // Normalizes the brightness.\\n        //         if (do_invert)\\n        //         {\\n        //             var rr = red;\\n        //             var bb = blue;\\n        //             blue = rr;\\n        //             red = bb;\\n        //         }\\n        //         var l = red * 0.299 + green * 0.587 + blue * 0.114;\\n        //         green = maxval * green / l;\\n        //         red = maxval * red / l;\\n        //         blue = maxval * blue / l;\\n        //         red_hex = convcol(red);\\n        //         green_hex = convcol(green);\\n        //         blue_hex = convcol(blue);\\n        //         return "color: white; background: #" + red_hex + green_hex + blue_hex;\\n        //     }\\n        //\\n        //     function convcol(x)\\n        //     {\\n        //         var xx = Math.max(0, Math.min(255, x));\\n        //         var ss = Math.round(xx).toString(16);\\n        //         if (ss.length < 2)\\n        //         {\\n        //             ss = "0" + ss;\\n        //         }\\n        //         return ss;\\n        //     }\\n        //\\n        //\\n        //     $(function ()\\n        //     {\\n        //         var rows = $("#table").find(\\\'tbody\\\').find(\\\'tr\\\');\\n        //         $.each(rows, function (key, value)\\n        //         {\\n        //             var rowData = $(rows[key]).find(\\\'td:eq(1)\\\').html();\\n        //\\n        //             if (parseInt(rowData, 10) < 0)\\n        //             {\\n        //                 $(this).addClass(\\\'negative\\\');\\n        //             }\\n        //             else {\\n        //                 $(this).addClass(\\\'positive\\\');\\n        //             }\\n        //         });\\n        //     });\\n        // });\\n    </script>\\n\\n\\n    <body>\\n        <div id=\\\'container\\\'></div>\\n\\n        <a class="back-button" href="\', escape=False)\nresponse.write(URL(\'default\',\'index\'))\nresponse.write(\'">Back</a>\\n\\n        <div id="input-form" class="form-modal">\\n            <form enctype="multipart/form-data" method="POST" action="\', escape=False)\nresponse.write(URL(\'default\', \'search\'))\nresponse.write(\'">\\n                <input class="input" type="text" name="name" placeholder="Target Name:\', escape=False)\nresponse.write(reqs.name)\nresponse.write(\'">\\n                <input class="input" type="text" name="ra" placeholder=RA:\', escape=False)\nresponse.write(reqs.ra)\nresponse.write(\'>\\n                <input class="input" type="text" name="dec" placeholder="DEC:\', escape=False)\nresponse.write(reqs.dec)\nresponse.write(\'">\\n                <input class="input" type="text" name="rad" placeholder="Radius:\', escape=False)\nresponse.write(reqs.rad)\nresponse.write(\'"/>\\n\\n                <select class="input" name="cat">\\n                    <option disabled="disabled" selected>Catalog...</option>\\n                    <option value="USNO-B1">USNO-B1</option>\\n                    <option value="GSC">GSC</option>\\n                    <option value="NOMAD">NOMAD</option>\\n                    <option value="UCAC">UCAC</option>\\n                </select>\\n                <input class="button" type="submit" value="Submit">\\n            </form>\\n        </div>\\n\\n        <div id="results-table">\\n            <table class="table">\\n                <thead>\\n                    <tr>\\n                        <td>Name</td>\\n                        <td>RA</td>\\n                        <td>DEC</td>\\n                        <td>Magnitude</td>\\n                    </tr>\\n                </thead>\\n                <tbody>\\n                    \', escape=False)\nfor entry in dict:\n    response.write(\'\\n                        <tr>\\n                            <td id="name">\', escape=False)\n    response.write(reqs.name)\n    response.write(\'</td>\\n                            <td id="ra">\', escape=False)\n    response.write(dict[entry][\'RA\'])\n    response.write(\'</td>\\n                            <td id="dec">\', escape=False)\n    response.write(dict[entry][\'DEC\'])\n    response.write(\'</td>\\n                            <td id="magnitude">\', escape=False)\n    response.write(dict[entry][\'mag\'])\n    response.write(\'</td>\\n                        </tr>\\n                    \', escape=False)\n    pass\nresponse.write(\'\\n                </tbody>\\n            </table>\\n        </div>\\n\\n        <button id="save_query_button" class="button" align="right" href="\', escape=False)\nresponse.write(URL(\'default\',\'save_query\', user_signature=True))\nresponse.write(\'">Save this query</button>\\n    </body>\\n</html>\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.TypeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.TypeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.TypeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.TypeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.TypeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.TypeError object>'
+p23
+sS'args'
+p24
+S'("\'NoneType\' object is not iterable",)'
+p25
+sS'__reduce__'
+p26
+S'<built-in method __reduce__ of exceptions.TypeError object>'
+p27
+sS'__str__'
+p28
+S"<method-wrapper '__str__' of exceptions.TypeError object>"
+p29
+sS'__format__'
+p30
+S'<built-in method __format__ of exceptions.TypeError object>'
+p31
+sS'__getattribute__'
+p32
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object>"
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.TypeError'>"
+p35
+sS'__unicode__'
+p36
+S'<built-in method __unicode__ of exceptions.TypeError object>'
+p37
+sS'__delattr__'
+p38
+S"<method-wrapper '__delattr__' of exceptions.TypeError object>"
+p39
+sS'__subclasshook__'
+p40
+S'<built-in method __subclasshook__ of type object>'
+p41
+sS'__repr__'
+p42
+S"<method-wrapper '__repr__' of exceptions.TypeError object>"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.TypeError object>'
+p47
+sS'__doc__'
+p48
+S"'Inappropriate argument type.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.TypeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"'NoneType' object is not iterable"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\xf4e\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>polarisproject</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-aa92e9b0-7ff9-442e-a98b-c1cd0f25ff29<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_polarisproject</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-40662893-d23f-4f72-8065-6fee46bf881b<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>441</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_TYPE</td><td style="vertical-align:top;">:</td><td><div>multipart/form-data; boundary=----WebKitFormBoundarymXeF2VjPR8KZAfwG</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-us</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>441</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONTENT_TYPE</td><td style="vertical-align:top;">:</td><td><div>multipart/form-data; boundary=----WebKitFormBoundarymXeF2VjPR8KZAfwG</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_admin=127.0.0.1-aa92e9b0-7ff9-442e-a98b-c1cd0f25ff29; session_id_polarisproject=127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82; session_id_welcome=127.0.0.1-40662893-d23f-4f72-8065-6fee46bf881b</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ORIGIN</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/polarisproject/default/onetime</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/polarisproject/default/search</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>49170</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>eduroam-169-233-203-230.ucsc.edu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/admin/&#x27;, &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/welcome/&#x27;, &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x1062e9710: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;eduroam-169-233-203-230.ucsc.edu&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: True, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_length</td><td style="vertical-align:top;">:</td><td><div>441</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_type</td><td style="vertical-align:top;">:</td><td><div>multipart/form-data; boundary=----WebKitFormBoundarymXeF2VjPR8KZAfwG</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-us</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_content_length</td><td style="vertical-align:top;">:</td><td><div>441</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_content_type</td><td style="vertical-align:top;">:</td><td><div>multipart/form-data; boundary=----WebKitFormBoundarymXeF2VjPR8KZAfwG</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_admin=127.0.0.1-aa92e9b0-7ff9-442e-a98b-c1cd0f25ff29; session_id_polarisproject=127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82; session_id_welcome=127.0.0.1-40662893-d23f-4f72-8065-6fee46bf881b</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_origin</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/polarisproject/default/onetime</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.233.203.230</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>eduroam-169-233-203-230.ucsc.edu</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/polarisproject/default/search</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>49170</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/polarisproject/default/search</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>eduroam-169-233-203-230.ucsc.edu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x10027c1e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x105ff14c8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x1167a7ed0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x10027c1e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x105ff14c8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x1167a7ed0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>search</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/admin/&#x27;, &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/welcome/&#x27;, &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x1062e9710: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;eduroam-169-233-203-230.ucsc.edu&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: True, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.233.203.230</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>eduroam-169-233-203-230.ucsc.edu</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 13, 12, 8, 53, 794707)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/polarisproject/default/search</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 11, 13, 20, 8, 53, 794715)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x117db0dd0&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x117d109b0, file "/Use...olarisproject/views/default/search.html", line 1>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S'(code=r"response.write(\'<html>\\n    <head>\\n        <tit...ry</button>\\n    </body>\\n</html>\', escape=False)", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, ...}, layer=\'/Users/arseniykhmelidze/Documents/Documents/UCSC...ications/polarisproject/views/default/search.html\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/views/default/search.html'
+p88
+sg64
+(dp89
+S'var'
+p90
+S'undefined'
+p91
+sS'i'
+g91
+sS'arr'
+p92
+g91
+ssg70
+I30
+sg71
+(dp93
+I32
+S'    response.write(reqs.name)'
+p94
+sI33
+S'    response.write(\'</td>\\n                            <td id="ra">\', escape=False)'
+p95
+sI34
+S"    response.write(dict[entry]['RA'])"
+p96
+sI35
+S'    response.write(\'</td>\\n                            <td id="dec">\', escape=False)'
+p97
+sI36
+S"    response.write(dict[entry]['DEC'])"
+p98
+sI37
+S'    response.write(\'</td>\\n                            <td id="magnitude">\', escape=False)'
+p99
+sI38
+S"    response.write(dict[entry]['mag'])"
+p100
+sI39
+S"    response.write('</td>\\n                        </tr>\\n                    ', escape=False)"
+p101
+sI40
+S'    pass'
+p102
+sI21
+S'response.write(\'">\\n                <input class="input" type="text" name="name" placeholder="Target Name:\', escape=False)'
+p103
+sI22
+S'response.write(reqs.name)'
+p104
+sI23
+S'response.write(\'">\\n                <input class="input" type="text" name="ra" placeholder=RA:\', escape=False)'
+p105
+sI24
+S'response.write(reqs.ra)'
+p106
+sI25
+S'response.write(\'>\\n                <input class="input" type="text" name="dec" placeholder="DEC:\', escape=False)'
+p107
+sI26
+S'response.write(reqs.dec)'
+p108
+sI27
+S'response.write(\'">\\n                <input class="input" type="text" name="rad" placeholder="Radius:\', escape=False)'
+p109
+sI28
+S'response.write(reqs.rad)'
+p110
+sI29
+S'response.write(\'"/>\\n\\n                <select class="input" name="cat">\\n                    <option disabled="disabled" selected>Catalog...</option>\\n                    <option value="USNO-B1">USNO-B1</option>\\n                    <option value="GSC">GSC</option>\\n                    <option value="NOMAD">NOMAD</option>\\n                    <option value="UCAC">UCAC</option>\\n                </select>\\n                <input class="button" type="submit" value="Submit">\\n            </form>\\n        </div>\\n\\n        <div id="results-table">\\n            <table class="table">\\n                <thead>\\n                    <tr>\\n                        <td>Name</td>\\n                        <td>RA</td>\\n                        <td>DEC</td>\\n                        <td>Magnitude</td>\\n                    </tr>\\n                </thead>\\n                <tbody>\\n                    \', escape=False)'
+p111
+sI30
+S'for entry in dict:'
+p112
+sI31
+S'    response.write(\'\\n                        <tr>\\n                            <td id="name">\', escape=False)'
+p113
+ssg83
+S'()'
+p114
+sg85
+S'<module>'
+p115
+sasS'pyver'
+p116
+S'Python 2.7.12: //anaconda/bin/python (prefix: //anaconda)'
+p117
+sS'session'
+p118
+g57
+(S's\x98\x00\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div>'
+tRp119
+sS'etype'
+p120
+S"<type 'exceptions.TypeError'>"
+p121
+sS'date'
+p122
+S'Sun Nov 13 12:08:53 2016'
+p123
+sS'response'
+p124
+g57
+(S's0@\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x11d109228&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_polarisproject</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="http://www.web2py.com/" id="web2py-logo"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/polarisproject/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Design</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/polarisproject</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Controller</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>View</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/views/default/search.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Menu Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Config.ini</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/private/appconfig.ini</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Layout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stylesheet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/polarisproject/static/css/web2py-bootstrap3.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/polarisproject/appadmin/index</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Errors</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/errors/polarisproject</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>About</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/about/polarisproject</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Download</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/download</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Support</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/support</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Demo</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/demo_admin</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Quick Examples</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/examples/default/examples</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>FAQ</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/AlterEgo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Videos</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/videos/</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Free Applications</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/appliances</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/plugins</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2pyslices.com/</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Online book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Preface</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/00</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Introduction</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/01</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Python</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/02</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Overview</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/03</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Core</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/04</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Views</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/05</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/06</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Forms and Validators</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/07</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Email and SMS</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/08</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Access Control</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/09</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Services</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/10</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Ajax Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/11</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Components and Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/12</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Deployment Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/13</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Other Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/14</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Helping web2py</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/15</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Buy web2py\'s book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://stores.lulu.com/web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Groups</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/usergroups</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Twitter</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://twitter.com/web2py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Live Chat</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://webchat.freenode.net/?channels=web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>web2py</div></td></tr><tr><td><div>python</div></td></tr><tr><td><div>framework</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/search/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_polarisproject</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/sessions/0e0/022/127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82&#x27;, mode &#x27;rb+&#x27; at 0x117cdf540&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/sessions/127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>6efb6a50c469891af9346861d68dd7f7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-901462c0-4fe3-4995-95fa-5efd55621d82</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_polarisproject</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>polarisproject</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Polarisproject</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/search.html</div></td></tr></table></div>'
+tRp125
+sS'locals'
+p126
+(dp127
+S'json_dict'
+p128
+S"'null'"
+p129
+sS'Service'
+p130
+S"<class 'gluon.tools.Service'>"
+p131
+sS'OBJECT'
+p132
+S"<class 'gluon.html.OBJECT'>"
+p133
+sS'SQLDB'
+p134
+S"<class 'pydal.base.DAL'>"
+p135
+sg118
+S"<Storage {'_auth_next': '/polarisproject/default...gin]': ['f1cedd7f-a14d-4db9-8caa-03feb68c0d04']}>"
+p136
+sS'LINK'
+p137
+S"<class 'gluon.html.LINK'>"
+p138
+sS'BR'
+p139
+S"<class 'gluon.html.BR'>"
+p140
+sS'local_import'
+p141
+S'<function <lambda>>'
+p142
+sS'OPTGROUP'
+p143
+S"<class 'gluon.html.OPTGROUP'>"
+p144
+sS'__package__'
+p145
+S'None'
+p146
+sS'PRE'
+p147
+S"<class 'gluon.html.PRE'>"
+p148
+sS'IS_INT_IN_RANGE'
+p149
+S"<class 'gluon.validators.IS_INT_IN_RANGE'>"
+p150
+sS'IS_LOWER'
+p151
+S"<class 'gluon.validators.IS_LOWER'>"
+p152
+sS'IS_STRONG'
+p153
+S"<class 'gluon.validators.IS_STRONG'>"
+p154
+sS'cache'
+p155
+S'<gluon.cache.Cache object>'
+p156
+sS'IS_IN_DB'
+p157
+S"<class 'gluon.validators.IS_IN_DB'>"
+p158
+sS'TAG'
+p159
+S'<gluon.html.__TAG__ object>'
+p160
+sS'dict'
+p161
+S'None'
+p162
+sS'SQLField'
+p163
+S"<class 'pydal.objects.Field'>"
+p164
+sS'mail'
+p165
+S'<gluon.tools.Mail object>'
+p166
+sS'BODY'
+p167
+S"<class 'gluon.html.BODY'>"
+p168
+sS'IS_DATE_IN_RANGE'
+p169
+S"<class 'gluon.validators.IS_DATE_IN_RANGE'>"
+p170
+sS'IFRAME'
+p171
+S"<class 'gluon.html.IFRAME'>"
+p172
+sS'URL'
+p173
+S'<function URL>'
+p174
+sS'__file__'
+p175
+S"'/Users/arseniykhmelidze/Documents/Documents/UCSC...ications/polarisproject/views/default/search.html'"
+p176
+sS'db'
+p177
+S'<DAL uri="sqlite://storage.sqlite">'
+p178
+sS'auth'
+p179
+S'<gluon.tools.Auth object>'
+p180
+sS'P'
+S"<class 'gluon.html.P'>"
+p181
+sS'TFOOT'
+p182
+S"<class 'gluon.html.TFOOT'>"
+p183
+sS'XHTML'
+p184
+S"<class 'gluon.html.XHTML'>"
+p185
+sS'datetime'
+p186
+S"<module 'datetime' from '//anaconda/lib/python2.7/lib-dynload/datetime.so'>"
+p187
+sS'ON'
+p188
+S'True'
+p189
+sS'OL'
+p190
+S"<class 'gluon.html.OL'>"
+p191
+sS'TEXTAREA'
+p192
+S"<class 'gluon.html.TEXTAREA'>"
+p193
+sS'MENU'
+p194
+S"<class 'gluon.html.MENU'>"
+p195
+sS'IS_IMAGE'
+p196
+S"<class 'gluon.validators.IS_IMAGE'>"
+p197
+sS'EM'
+p198
+S"<class 'gluon.html.EM'>"
+p199
+sS'CODE'
+p200
+S"<class 'gluon.html.CODE'>"
+p201
+sS'HTTP'
+p202
+S"<class 'gluon.http.HTTP'>"
+p203
+sS'HR'
+p204
+S"<class 'gluon.html.HR'>"
+p205
+sS'IS_DATETIME'
+p206
+S"<class 'gluon.validators.IS_DATETIME'>"
+p207
+sS'STYLE'
+p208
+S"<class 'gluon.html.STYLE'>"
+p209
+sS'LABEL'
+p210
+S"<class 'gluon.html.LABEL'>"
+p211
+sS'CLEANUP'
+p212
+S"<class 'gluon.validators.CLEANUP'>"
+p213
+sS'plugins'
+p214
+S'<gluon.tools.PluginManager object>'
+p215
+sS'SELECT'
+p216
+S"<class 'gluon.html.SELECT'>"
+p217
+sS'CENTER'
+p218
+S"<class 'gluon.html.CENTER'>"
+p219
+sS'Auth'
+p220
+S"<class 'gluon.tools.Auth'>"
+p221
+sS'DEVELOPMENT_MENU'
+p222
+g189
+sS'__builtins__'
+p223
+S"{'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}"
+p224
+sS'HTML'
+p225
+S"<class 'gluon.html.HTML'>"
+p226
+sS'SQLFORM'
+p227
+S"<class 'gluon.sqlhtml.SQLFORM'>"
+p228
+sS'LOAD'
+p229
+S'<function LOAD>'
+p230
+sS'redirect'
+p231
+S'<function redirect>'
+p232
+sS'FIELDSET'
+p233
+S"<class 'gluon.html.FIELDSET'>"
+p234
+sS'IS_EQUAL_TO'
+p235
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p236
+sS'embed64'
+p237
+S'<function embed64>'
+p238
+sS'IS_LIST_OF'
+p239
+S"<class 'gluon.validators.IS_LIST_OF'>"
+p240
+sS'INPUT'
+p241
+S"<class 'gluon.html.INPUT'>"
+p242
+sS'EMBED'
+p243
+S"<class 'gluon.html.EMBED'>"
+p244
+sS'_'
+S'<function _>'
+p245
+sS'myconf'
+p246
+S"{'forms': {'formstyle': 'bootstrap3_inline', 'se...': {'names': 'localhost:*, 127.0.0.1:*, *:*, *'}}"
+p247
+sS'H2'
+p248
+S"<class 'gluon.html.H2'>"
+p249
+sS'H3'
+p250
+S"<class 'gluon.html.H3'>"
+p251
+sS'AppConfig'
+p252
+S'<function AppConfig>'
+p253
+sS'H1'
+p254
+S"<class 'gluon.html.H1'>"
+p255
+sS'H6'
+p256
+S"<class 'gluon.html.H6'>"
+p257
+sS'H4'
+p258
+S"<class 'gluon.html.H4'>"
+p259
+sS'H5'
+p260
+S"<class 'gluon.html.H5'>"
+p261
+sS'UL'
+p262
+S"<class 'gluon.html.UL'>"
+p263
+sS'IS_UPPER'
+p264
+S"<class 'gluon.validators.IS_UPPER'>"
+p265
+sS'xmlescape'
+p266
+S'<function xmlescape>'
+p267
+sS'IS_TIME'
+p268
+S"<class 'gluon.validators.IS_TIME'>"
+p269
+sS'OPTION'
+p270
+S"<class 'gluon.html.OPTION'>"
+p271
+sS'TITLE'
+p272
+S"<class 'gluon.html.TITLE'>"
+p273
+sS'CRYPT'
+p274
+S"<class 'gluon.validators.CRYPT'>"
+p275
+sS'IS_EMPTY_OR'
+p276
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p277
+sS'MARKMIN'
+p278
+S"<class 'gluon.html.MARKMIN'>"
+p279
+sS'__name__'
+p280
+S"'__restricted__'"
+p281
+sS'STRONG'
+p282
+S"<class 'gluon.html.STRONG'>"
+p283
+sS'COL'
+p284
+S"<class 'gluon.html.COL'>"
+p285
+sS'service'
+p286
+S'<gluon.tools.Service object>'
+p287
+sS'SCRIPT'
+p288
+S"<class 'gluon.html.SCRIPT'>"
+p289
+sS'TABLE'
+p290
+S"<class 'gluon.html.TABLE'>"
+p291
+sS'IS_IPV4'
+p292
+S"<class 'gluon.validators.IS_IPV4'>"
+p293
+sS'IS_LENGTH'
+p294
+S"<class 'gluon.validators.IS_LENGTH'>"
+p295
+sS'IS_IPV6'
+p296
+S"<class 'gluon.validators.IS_IPV6'>"
+p297
+sS'XML'
+p298
+S"<class 'gluon.html.XML'>"
+p299
+sS'B'
+S"<class 'gluon.html.B'>"
+p300
+sS'IMG'
+p301
+S"<class 'gluon.html.IMG'>"
+p302
+sS'SQLTABLE'
+p303
+S"<class 'gluon.sqlhtml.SQLTABLE'>"
+p304
+sS'IS_MATCH'
+p305
+S"<class 'gluon.validators.IS_MATCH'>"
+p306
+sS'IS_ALPHANUMERIC'
+p307
+S"<class 'gluon.validators.IS_ALPHANUMERIC'>"
+p308
+sS'CAT'
+p309
+S"<class 'gluon.html.CAT'>"
+p310
+sS'SPAN'
+p311
+S"<class 'gluon.html.SPAN'>"
+p312
+sS'IS_JSON'
+p313
+S"<class 'gluon.validators.IS_JSON'>"
+p314
+sS'IS_IPADDRESS'
+p315
+S"<class 'gluon.validators.IS_IPADDRESS'>"
+p316
+sS'IS_SLUG'
+p317
+S"<class 'gluon.validators.IS_SLUG'>"
+p318
+sS'BEAUTIFY'
+p319
+S"<class 'gluon.html.BEAUTIFY'>"
+p320
+sS'META'
+p321
+S"<class 'gluon.html.META'>"
+p322
+sS'BUTTON'
+p323
+S"<class 'gluon.html.BUTTON'>"
+p324
+sS'IS_DATE'
+p325
+S"<class 'gluon.validators.IS_DATE'>"
+p326
+sS'IS_EMAIL'
+p327
+S"<class 'gluon.validators.IS_EMAIL'>"
+p328
+sS'IS_NOT_EMPTY'
+p329
+S"<class 'gluon.validators.IS_NOT_EMPTY'>"
+p330
+sS'IS_FLOAT_IN_RANGE'
+p331
+S"<class 'gluon.validators.IS_FLOAT_IN_RANGE'>"
+p332
+sS'TBODY'
+p333
+S"<class 'gluon.html.TBODY'>"
+p334
+sS'reqs'
+p335
+S"<Storage {'rad': '10s', 'dec': '+38d47m01.2802s', 'name': 'vega', 'ra': '18h36m56.33645s'}>"
+p336
+sS'Field'
+p337
+S"<class 'pydal.objects.Field'>"
+p338
+sS'IS_LIST_OF_EMAILS'
+p339
+S"<class 'gluon.validators.IS_LIST_OF_EMAILS'>"
+p340
+sS'DIV'
+p341
+S"<class 'gluon.html.DIV'>"
+p342
+sS'LEGEND'
+p343
+S"<class 'gluon.html.LEGEND'>"
+p344
+sS'COLGROUP'
+p345
+S"<class 'gluon.html.COLGROUP'>"
+p346
+sS'DAL'
+p347
+S"<class 'pydal.base.DAL'>"
+p348
+sS'ASSIGNJS'
+p349
+S'<function ASSIGNJS>'
+p350
+sS'TR'
+p351
+S"<class 'gluon.html.TR'>"
+p352
+sS'LI'
+p353
+S"<class 'gluon.html.LI'>"
+p354
+sS'TH'
+p355
+S"<class 'gluon.html.TH'>"
+p356
+sS'TD'
+p357
+S"<class 'gluon.html.TD'>"
+p358
+sS'PluginManager'
+p359
+S"<class 'gluon.tools.PluginManager'>"
+p360
+sS'IS_URL'
+p361
+S"<class 'gluon.validators.IS_URL'>"
+p362
+sS'A'
+S"<class 'gluon.html.A'>"
+p363
+sS'HEAD'
+p364
+S"<class 'gluon.html.HEAD'>"
+p365
+sS'IS_DATETIME_IN_RANGE'
+p366
+S"<class 'gluon.validators.IS_DATETIME_IN_RANGE'>"
+p367
+sS'FORM'
+p368
+S"<class 'gluon.html.FORM'>"
+p369
+sS'I'
+S"<class 'gluon.html.I'>"
+p370
+sS'IS_NOT_IN_DB'
+p371
+S"<class 'gluon.validators.IS_NOT_IN_DB'>"
+p372
+sg124
+S"<Storage {'body': <cStringIO.StringO object at 0... at 0x117d40d70>, 'view': 'default/search.html'}>"
+p373
+sS'THEAD'
+p374
+S"<class 'gluon.html.THEAD'>"
+p375
+sS'ANY_OF'
+p376
+S"<class 'gluon.validators.ANY_OF'>"
+p377
+sS'IS_NULL_OR'
+p378
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p379
+sg56
+S"<Storage {'_vars': <Storage {'rad': '10s', 'dec'...C/CMPS 183/web2py/applications/polarisproject/'}>"
+p380
+sS'IS_EXPR'
+p381
+S"<class 'gluon.validators.IS_EXPR'>"
+p382
+sS'T'
+S'<gluon.languages.translator object>'
+p383
+sS'IS_IN_SET'
+p384
+S"<class 'gluon.validators.IS_IN_SET'>"
+p385
+sS'IS_UPLOAD_FILENAME'
+p386
+S"<class 'gluon.validators.IS_UPLOAD_FILENAME'>"
+p387
+sS'TT'
+p388
+S"<class 'gluon.html.TT'>"
+p389
+sS'IS_DECIMAL_IN_RANGE'
+p390
+S"<class 'gluon.validators.IS_DECIMAL_IN_RANGE'>"
+p391
+sssS'traceback'
+p392
+S'Traceback (most recent call last):\n  File "/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/Users/arseniykhmelidze/Documents/Documents/UCSC/CMPS 183/web2py/applications/polarisproject/views/default/search.html", line 30, in <module>\nTypeError: \'NoneType\' object is not iterable\n'
+p393
+s.
