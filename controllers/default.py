@@ -68,8 +68,9 @@ def find_guides(target, cat, rad):
     from astroquery.vizier import Vizier
     from astropy.coordinates import Angle
     result = Vizier.query_region(target, radius=rad, catalog=cat)
-    dict = {}
-    i = 0
+    #dict = {}
+    dict = []
+    #i = 0
     mag_type = 'None'
     if len(result) > 0:
         for row in (result[0]):
@@ -88,15 +89,17 @@ def find_guides(target, cat, rad):
             else:
                 col_list['mag'] = '-'
                 #mag_type already intiated "None"
-            dict[i] = col_list
-            i = i + 1 
+            #dict[i] = col_list
+            dict.append(col_list)
+            #i = i + 1
     else:
         col_list = {}
         col_list['RA'] = float(0)
         col_list['DEC'] = float(0)
         col_list['mag'] = float(0)
         #mag_type already intiated "None"
-        dict[0] = col_list
+        #dict[0] = col_list
+        dict.append(col_list)
     col_list['mag_type'] = mag_type   #initiated as "None", changes if an R1 or R2 value
     return dict
 
@@ -111,7 +114,10 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    return dict(dict = call_dict, reqs=request.vars)
+
+    import json
+    json_str = json.dumps(call_dict)
+    return dict(son_dict=json_str, dict = call_dict, reqs=request.vars)
 
 def aprox_strehl():
     import math

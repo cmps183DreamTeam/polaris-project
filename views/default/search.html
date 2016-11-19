@@ -50,10 +50,10 @@
                     {{for entry in dict:}}
                         <tr>
                             <!--<td id="name">{{=reqs.name}}</td>-->
-                            <td id="ra">{{=dict[entry]['RA']}}</td>
-                            <td id="dec">{{=dict[entry]['DEC']}}</td>
-                            <td id="magnitude">{{=dict[entry]['mag']}}</td>
-                            <td id="magnitude_type">{{=dict[entry]['mag_type']}}</td>
+                            <td id="ra">{{=entry['RA']}}</td>
+                            <td id="dec">{{=entry['DEC']}}</td>
+                            <td id="magnitude">{{=entry['mag']}}</td>
+                            <td id="magnitude_type">{{=entry['mag_type']}}</td>
                         </tr>
                     {{pass}}
                 </tbody>
