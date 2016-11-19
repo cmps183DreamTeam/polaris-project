@@ -38,8 +38,51 @@
     </head>
     <body>
         <div id="fullpage">
+            <!--0nd section-->
+            <div class="section">
+                <div id='container'></div>
+                <div id='highlighted'>Nothing Highlighted</div>
+                <div id='selected'>Nothing Selected</div>
+                <script>
+                    var json_str = '{{=XML(json_dict)}}';
 
-            <!--1nd section-->
+                    console.log(json_str);
+
+
+                    var arr = JSON.parse(json_str);
+                    console.log(arr);
+
+
+                    var table_plot = makeTable()
+                      .datum(arr)
+                      .sortBy('mag', true)
+
+                    d3.select('#container').call(table_plot);
+
+                    table_plot.on('highlight', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                           d3.select('#highlighted').text('Mouse on row '  + data.GeneID);
+                      }
+                    });
+
+                    table_plot.on('select', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                        d3.select('#selected').text(
+                          'Last clicked row was ' + data.GeneID
+                        );
+                      }
+                    });
+
+                </script>
+            </div>
+
+            <!--1st old style (python generated table) section-->
             <div class="section">
                 <a class="back-button" href="{{=URL('default','index')}}">Back</a>
 
@@ -75,9 +118,6 @@
                         href="{{=URL('default','save_query', user_signature=True)}}">
                     Save this query
                 </button>
-                <div id='container'></div>
-                <div id='highlighted'>Nothing Highlighted</div>
-                <div id='selected'>Nothing Selected</div>
             </div>
 
             <!--2nd section-->

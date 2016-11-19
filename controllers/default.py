@@ -117,7 +117,7 @@ def search():
 
     import json
     json_str = json.dumps(call_dict)
-    return dict(son_dict=json_str, dict = call_dict, reqs=request.vars)
+    return dict(json_dict=json_str, dict = call_dict, reqs=request.vars)
 
 def aprox_strehl():
     import math
