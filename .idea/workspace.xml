@@ -2,8 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9d18d50-049b-4f92-96b8-1a5212cb428b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/00f/0ba/127.0.0.1-63675c07-a3c2-4f7b-be7c-db54dead8e51" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/024/198/127.0.0.1-f95f4424-7925-4a07-ad85-1f9e41b85c5b" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/026/196/127.0.0.1-a07e6b0f-a8de-45e4-b3f4-d44398834fde" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/05b/156/127.0.0.1-a7b2527c-ef9f-410e-a5eb-b89146d83be1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0db/191/127.0.0.1-23367645-4c8c-4e70-bea7-0d217b304380" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0e8/11f/127.0.0.1-97ae8efd-579c-48d9-8646-3dc68bd3b319" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f6/11a/127.0.0.1-b9ed3abf-cf1f-44f2-9983-8c37861a12c0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/0f8/0c0/127.0.0.1-dc5137ec-c0c5-4bbc-9628-8fa875634847" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/159/197/127.0.0.1-a72c0d02-a8a5-41ab-8136-4781ca6312f4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sessions/1f7/0f9/127.0.0.1-1e8445ed-066a-413c-bd13-6fd9cd8338de" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/search.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_queries.table" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.00-46-10.26420b24-c253-47ae-b4fa-86d8317344ee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.00-49-16.8003b504-b64d-485b-86a5-5efd1cd8e1a6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.00-50-22.35a8ad5a-0892-4dca-94b6-a0b8e8719b7b" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.09-43-43.e89907e3-07ab-474e-894c-8131b017447e" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.10-28-30.f2d6784b-3784-41d9-95f3-a809b09e6044" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.10-30-24.56ccf6f2-735e-4212-b3f5-ab625dc575c4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.10-32-38.c5bb1317-746f-4cc4-aa8a-fba4f1128fc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.10-32-50.dcd75c97-db1a-4050-8314-027f20a58a3a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.10-33-26.28c66069-48fe-4a06-b5a9-f9cc2426fbdb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-10.13-42-34.641a1dca-b38e-4306-b8c3-e5b846aecfc0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.19-43-46.91a50b60-8056-4a15-9276-7db14090c0b2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.19-44-11.86abb3ca-dd43-4912-b71f-6302c7055934" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.19-46-01.29672516-1f7d-4b9d-b1a0-4016ae4f6d93" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-11-50.43f52e38-bc95-460e-aff8-4178ea40160d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-13-18.b846c5b9-0c9b-43e5-9d64-0ff8a12d3f30" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-13-26.583148fa-08de-42a4-8668-031a37ec1106" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-13-39.ab6d2590-ad00-4cd4-bbf4-0fb25ef8dfd9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-13-43.89c1df02-a347-4d03-862d-ab1b502855ab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-36-20.200d4a22-759b-4114-b6fb-c7606bd33a8d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-13.20-36-26.49f33592-1592-4438-ab60-06e1802260c1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.01-30-35.47a3f155-0dc5-4f9f-8668-f9d6835defe9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.02-36-21.6bef6c74-260f-4b38-a5a6-1b874c902514" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.02-47-09.4c3fcef9-5418-47f6-b7e0-fe489525c660" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.09-46-19.04d91cc8-0c97-4ebf-a8a0-0c6cc39a2e76" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.11-36-05.f3fe53d5-c4ae-4ff6-82d9-93caaa70d20a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.11-36-12.504ac91c-65c6-4a70-9abd-c3fea8cbc067" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-17.11-36-21.a386ff91-b6ac-4b10-8ffd-3af6cd388ef0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-19.14-15-00.b1c9f786-df57-409c-95e1-41bf76643f04" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-19.14-21-00.dc3be9fe-8ed8-4cad-9896-d9b5d83d2112" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-19.14-41-21.44d5bc83-2798-4db4-839d-11e0a598cac6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/errors/127.0.0.1.2016-11-19.15-01-51.5019381d-7ba4-40db-8927-e50037ac597a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/jquery.fullpage.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/default_index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.easings.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.fullPage.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.fullpage.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/makeTable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/vue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/vue.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/1c6/066/127.0.0.1-30897f29-141e-414b-a723-d3838a75cf33" afterPath="$PROJECT_DIR$/sessions/1c6/066/127.0.0.1-30897f29-141e-414b-a723-d3838a75cf33" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/default.py" afterPath="$PROJECT_DIR$/controllers/default.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/sql.log" afterPath="$PROJECT_DIR$/databases/sql.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/tables.py" afterPath="$PROJECT_DIR$/models/tables.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/global.css" afterPath="$PROJECT_DIR$/static/css/global.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/index.html" afterPath="$PROJECT_DIR$/views/default/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/search.html" afterPath="$PROJECT_DIR$/views/default/search.html" />
     </list>
     <ignored path="PolarisProject.iws" />
@@ -25,11 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="666">
+              <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -38,8 +93,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="75">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -55,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="default.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/default.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,10 +139,10 @@
         <option value="$PROJECT_DIR$/views/layout.html" />
         <option value="$PROJECT_DIR$/static/css/global.css" />
         <option value="$PROJECT_DIR$/views/default/onetime.html" />
-        <option value="$PROJECT_DIR$/controllers/default.py" />
         <option value="$PROJECT_DIR$/views/default/user.html" />
-        <option value="$PROJECT_DIR$/views/default/index.html" />
         <option value="$PROJECT_DIR$/views/default/search.html" />
+        <option value="$PROJECT_DIR$/views/default/index.html" />
+        <option value="$PROJECT_DIR$/controllers/default.py" />
       </list>
     </option>
   </component>
@@ -98,10 +153,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="33" />
-    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="873" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -128,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -242,6 +294,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,7 +547,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="33" y="23" width="1440" height="873" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -533,6 +586,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/default/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -585,7 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -641,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,31 +823,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/login.html" />
-    <entry file="file://$PROJECT_DIR$/views/default/onetime.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/default.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -778,18 +843,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+    <entry file="file://$PROJECT_DIR$/views/default/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="18" selection-end-column="17" />
+        <state relative-caret-position="666">
+          <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/search.html">
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="75">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/onetime.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>

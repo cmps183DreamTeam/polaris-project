@@ -4,20 +4,21 @@
 {{end head}}
 <div id="input-form" class="form-modal">
     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-        <input class="input" type="text" name="name" placeholder="Target Name">
+        <div class="button" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;">
+            Pick a target by name
+        </div>
+        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name">
         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
         <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
         <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
-
-        <select class="input" name="cat">
-            <option value="USNO-B1">USNO-B1</option>
-            <!--
-            <option value="GSC">GSC</option>
-            <option value="NOMAD">NOMAD</option>
-            <option value="UCAC">UCAC</option>
-            -->
-        </select>
-
+        {{if auth.user_id:}}
+            <select class="input" name="cat">
+                <option value="USNO-B1">USNO-B1</option>
+            </select>
+        {{pass}}
+        {{if not auth.user_id:}}
+            <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+        {{pass}}
         <input class="button" type="submit" value="Submit">
     </form>
 </div>

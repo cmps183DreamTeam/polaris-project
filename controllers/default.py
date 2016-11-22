@@ -16,32 +16,11 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    from astroquery.vizier import Vizier
-    from astropy.coordinates import SkyCoord
-    from astropy.coordinates import Angle
-    # user_in_targ_ra = '18h36m56.33645s'
-    # user_in_targ_dec = '+38d47m01.2802s'
-    # cat=["NOMAD", "UCAC"]
-    # rad = '5s'
-    # # set target
-    # cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
-    # # call find_guides
-    # call_dict = find_guides(cVega, cat, rad)
-    #
-    # response.flash = T("Hello World")
-    # return dict(message=T('Welcome to web2py!'), call_dict=call_dict)
-    #     form_type = 'create'
-    #     form = SQLFORM(db.tel)
-    #     #if form entered correctly, go to earch.html
-    #     if form.process().accepted:
-    #             redirect(URL('default', 'search'))
-    #     return dict(form = form)
+    #from astroquery.vizier import Vizier
+    #from astropy.coordinates import SkyCoord
+    #from astropy.coordinates import Angle
     return dict()
 
-# NOMAD # ['_RAJ2000', '_DEJ2000', '_r', 'NOMAD1', 'USNO-B1', 'UCAC2', 'Tycho-2', 'f_Tycho-2', 'YM', 'RAJ2000', 'DEJ2000', 'r', 'e_RAJ2000', 'e_DEJ2000', 'pmRA', 'e_pmRA', 'pmDE', 'e_pmDE', 'Bmag', 'r_Bmag', 'Vmag', 'r_Vmag', 'Rmag', 'r_Rmag', 'Jmag', 'Hmag', 'Kmag', 'Xflags', 'R']
-# UCAC # ['_RAJ2000', '_DEJ2000', '_r', 'UCAC4', 'RAJ2000', 'e_RAJ2000', 'DEJ2000', 'e_DEJ2000', 'ePos', 'EpRA', 'EpDE', 'f.mag', 'a.mag', 'e_a.mag', 'of', 'db', 'Na', 'Nu', 'Nc', 'pmRA', 'e_pmRA', 'pmDE', 'e_pmDE', 'MPOS1', 'UCAC2', 'Tycho-2', '_2Mkey', 'Jmag', 'e_Jmag', 'q_Jmag', 'Hmag', 'e_Hmag', 'q_Hmag', 'Kmag', 'e_Kmag', 'q_Kmag', 'Bmag', 'e_Bmag', 'f_Bmag', 'Vmag', 'e_Vmag', 'f_Vmag', 'gmag', 'e_gmag', 'f_gmag', 'rmag', 'e_rmag', 'f_rmag', 'imag', 'e_imag', 'f_imag', 'g', 'c', 'H', 'A', 'b', 'h', 'Z', 'B', 'L', 'N', 'S', 'LEDA', '_2MX']
-# GSC # ['_RAJ2000', '_DEJ2000', '_r', 'GSC', 'RAJ2000', 'DEJ2000', 'PosErr', 'Pmag', 'e_Pmag', 'n_Pmag', 'Class', 'Plate', 'Epoch', 'Mult', 'Versions']
-# USNO-B1 # ['_RAJ2000', '_DEJ2000', '_r', 'USNO-B1.0', 'Tycho-2', 'RAJ2000', 'DEJ2000', 'e_RAJ2000', 'e_DEJ2000', 'Epoch', 'pmRA', 'pmDE', 'muPr', 'e_pmRA', 'e_pmDE', 'fit_RA', 'fit_DE', 'Ndet', 'Flags', 'B1mag', 'B1C', 'B1S', 'B1f', 'B1s_g', 'B1xi', 'B1eta', 'R1mag', 'R1C', 'R1S', 'R1f', 'R1s_g', 'R1xi', 'R1eta', 'B2mag', 'B2C', 'B2S', 'B2f', 'B2s_g', 'B2xi', 'B2eta', 'R2mag', 'R2C', 'R2S', 'R2f', 'R2s_g', 'R2xi', 'R2eta', 'Imag', 'IC', 'IS', 'If', 'Is_g', 'Ixi', 'Ieta']
 def mag_key(catalog):
     return {
         'NOMAD': 'Vmag',
@@ -54,7 +33,6 @@ def test():
     redirect(URL('default', 'index'))
     response.flash = T(request.vars.name)
     return dict(name=request.vars.name)
-
 
 def user():
     """
@@ -85,80 +63,82 @@ def find_guides(target, cat, rad):
     from astroquery.vizier import Vizier
     from astropy.coordinates import Angle
     result = Vizier.query_region(target, radius=rad, catalog=cat)
-    dict = {}
-    #run through each table in results
-    # for x in range(0, len(result[0])-1):
-    #     t with RA, DEC, mag values
-    #     col_list = {}
-    #     col_list['RA'] = float(result[0][x]['_RAJ2000'])
-    #     col_list['DEC'] = float(result[0][x]['_DEJ2000'])
-    #     col_list['mag'] = float(result[0][x]['Vmag'])
-    #     #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
-    #     dict[x] = col
-    i = 0
+    #dict = {}
+    dict = []
+    #i = 0
+    mag_type = 'None'
     if len(result) > 0:
         for row in (result[0]):
             #create list with RA, DEC, mag values
             col_list = {}
             col_list['RA'] = float(row['_RAJ2000'])
             col_list['DEC'] = float(row['_DEJ2000'])
-            col_list['mag'] = float(row[mag_key(cat)])
-            #col_list = [float(result[0][x]['_RAJ2000']), float(result[0][x]['_DEJ2000']), float(result[0][x]['Vmag'])]
-            dict[i] = col_list
-            i = i + 1
+            #col_list['mag'] = float(row[mag_key(cat)])#R1mag
+            #dict[1] will hold which magnitude we return
+            if (row['R1mag']) is not None:
+                col_list['mag'] = float(row['R1mag'])
+                mag_type = '1st'
+            elif (row['R2mag']) is not None:
+                col_list['mag'] = float(row['R2mag'])
+                mag_type = '2nd'
+            else:
+                col_list['mag'] = '-'
+                #mag_type already intiated "None"
+            #dict[i] = col_list
+            dict.append(col_list)
+            #i = i + 1
     else:
         col_list = {}
         col_list['RA'] = float(0)
         col_list['DEC'] = float(0)
         col_list['mag'] = float(0)
-        dict[0] = col_list
+        #mag_type already intiated "None"
+        #dict[0] = col_list
+        dict.append(col_list)
+    col_list['mag_type'] = mag_type   #initiated as "None", changes if an R1 or R2 value
     return dict
-
-# def search():
-#     user_in_targ_ra = '18h36m56.33645s'
-#     user_in_targ_dec = '+38d47m01.2802s'
-#     cat=["NOMAD", "UCAC"]
-#     rad = '5s'
-#     # set target
-#     cVega = celestial_target(user_in_targ_ra, user_in_targ_dec)
-#     # call find_guides
-#     call_dict = find_guides(cVega, cat, rad)
-#
-#     if request.args(0) is not None:
-#         boom = request.args(0)
-#         return dict(boom = boom)
-#
-#     return dict(dict=call_dict)
-
-# def search():
-#     # get tel entered by user in db
-#     t = db(db.tel.name == "Vega").select().first()
-#     in_ra = t.ra
-#     in_dec = t.decl
-#     in_rad = t.rad
-#     in_cat = t.cat
-#     #user_in_targ_ra = '18h36m56.33645s'
-#     #user_in_targ_dec = '+38d47m01.2802s'
-#     #cat=["NOMAD", "UCAC"]
-#     #rad = '5s'
-#
-#     #call function to get coordinates
-#     cVega = celestial_target(in_ra, in_dec)
-#     #call find_guides
-#     call_dict = find_guides(cVega, in_cat, in_rad)
-#     return dict(dict = call_dict)
 
 def search():
     in_ra = request.vars.ra
     in_dec = request.vars.dec
     in_rad = request.vars.rad
     #in_cat = request.vars.cat
-    in_cat = "GSC" if (request.vars.cat) is None else (request.vars.cat)
+    in_cat = 'USNO-B1' if (request.vars.cat) is None else (request.vars.cat)
+    in_cat = 'USNO-B1'
     #call function to get coordinates
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    return dict(dict = call_dict, reqs=request.vars)
+
+    import json
+    json_str = json.dumps(call_dict)
+    return dict(json_dict=json_str, dict = call_dict, reqs=request.vars)
+
+def aprox_strehl():
+    import math
+    wavelength_reference = '0.5 mu' #micrometer #500nm
+    theta_const = '10arcsec'    #10s
+    theta_const_by_wavelength = theta_const*(wavelength_reference)*pow((wavelength/wavelength_reference), 5/6)
+    sima_pow_2 = pow((theta_const_by_wavelength/theta_const), 5/3)
+    strehl = pow(math.e, -sima_pow_2)
+    #NGS
+    return strehl
+
+def save_query():
+    #in_ra = request.vars.ra
+    #in_dec = request.vars.dec
+    #in_rad = request.vars.rad
+    #
+    #form = SQLFORM(db.post).process()
+    ## Add controls
+    #form.add_button("Cancel", URL('default', 'index'))
+    ## If all-correct perform edit, redirect home
+    #if form.process().accepted:
+    #    session.flash = 'new record inserted'
+    #    redirect(URL('default', 'index'))
+    #elif form.errors:
+    #    session.flash = T("Can't process those values.")
+    return
 
 @cache.action()
 def download():
