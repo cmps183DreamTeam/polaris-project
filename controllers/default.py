@@ -34,11 +34,6 @@ def test():
     response.flash = T(request.vars.name)
     return dict(name=request.vars.name)
 
-
-#def onetime():
-#    return dict();
-#
-
 def user():
     """
     exposes:

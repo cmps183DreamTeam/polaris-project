@@ -66,14 +66,14 @@ function makeTable()
 	      "bLengthChange": false, // Disable page size change
 	      "bDeferRender": true,
 	      "order": sort_by
-	    });
+	    })
 
 	    tableSelect.style("visibility", "visible");
       $('#d3_table tbody')
         .on( 'mouseover', 'tr', function () { highlight(this, true); } )
         .on( 'mouseleave', 'tr', function () { highlight(this, false); } )
         .on('click', 'tr', function () { select(this); });
-	  });
+	  })
 	}
 
 	/**** Helper functions to highlight and select data **************/
@@ -90,6 +90,16 @@ function makeTable()
 
 		// Fire a highlight event, with the data and highlight status.
 		dispatcher.highlight(table.rows(row).data()[0], on_off);
+
+		if(on_off == false) {
+			return $(row).find("td").css("background-color", "white");
+		}
+
+		var mag = Math.max(7, Number($(row).find("td").eq(3).text()));
+		var red = ((mag/20) * 255).toFixed(0);
+		var green = ((mag/16) * 255).toFixed(0);
+		var blue = ((mag/11) * 255).toFixed(0);
+		$(row).find("td").css("background-color", "rgb(" + red + "," + green + "," + blue + ")");
 	}
 	function select(row, on_off) {
 		// Similar to highlight function.

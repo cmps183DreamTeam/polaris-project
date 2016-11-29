@@ -7,18 +7,14 @@
         <div class="button" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;">
             Pick a target by name
         </div>
-        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name">
-        <input class="input" type="text" name="ra" placeholder="RA: hh mm ss">
-        <input class="input" type="text" name="dec" placeholder="DEC: dd mm">
-        <input class="input" type="text" name="rad" placeholder="Radius: mm ss"/>
-
+        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
+        <input class="input" type="text" name="ra" placeholder="RA: hh mm ss" value="18h36m56.33645s">
+        <input class="input" type="text" name="dec" placeholder="DEC: dd mm" value="+38d47m01.2802s">
+        <input class="input" type="text" name="rad" placeholder="Radius: mm ss" value="5s"/>
         {{if auth.user_id:}}
             <select class="input" name="cat">
                 <option value="USNO-B1">USNO-B1</option>
             </select>
-        {{pass}}
-        {{if not auth.user_id:}}
-            <a class="back-button" href="{{=URL('default','index')}}">Back</a>
         {{pass}}
         <input class="button" type="submit" value="Submit">
     </form>
