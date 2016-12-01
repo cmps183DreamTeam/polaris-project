@@ -45,16 +45,11 @@
 
                 <a class="back-button" href="{{=URL('default','index')}}">Back</a>
 
-                <div id='container'></div>
-                <div id='highlighted'>Nothing Highlighted</div>
-                <div id='selected'>Nothing Selected</div>
+                <div id='container' style=" width:100%;"></div>
 
 
                 <script>
                     var json_str = '{{=XML(json_dict)}}';
-
-                    console.log(json_str);
-
 
                     var arr = JSON.parse(json_str);
                     console.log(arr);
@@ -62,29 +57,9 @@
 
                     var table_plot = makeTable()
                       .datum(arr)
-                      .sortBy('mag', true)
+                      .sortBy('mag', true);
 
                     d3.select('#container').call(table_plot);
-
-                    table_plot.on('highlight', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                           d3.select('#highlighted').text('Mouse on row '  + data.GeneID);
-                      }
-                    });
-
-                    table_plot.on('select', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                        d3.select('#selected').text(
-                          'Last clicked row was ' + data.GeneID
-                        );
-                      }
-                    });
 
                 </script>
 
@@ -170,7 +145,7 @@
 
                     ticksRightAscension.selectAll("line")
                         .data(d3.range(0, 1440, 5)) // every 5 minutes
-                      .enter().append("line")
+                        .enter().append("line")
                         .each(function(d) {
                           var p0 = projection([d / 4, 0]),
                               p1 = projection([d / 4, d % 60 ? -1 : -2]);
@@ -184,7 +159,7 @@
 
                     ticksRightAscension.selectAll("text")
                         .data(d3.range(24)) // every hour
-                      .enter().append("text")
+                        .enter().append("text")
                         .each(function(d) {
                           var p = projection([d * 15, -4]);
 
@@ -197,9 +172,9 @@
 
                     svg.append("g")
                         .attr("class", "ticks ticks--declination")
-                      .selectAll("text")
+                        .selectAll("text")
                         .data(d3.range(10, 91, 10))
-                      .enter().append("text")
+                        .enter().append("text")
                         .each(function(d) {
                           var p = projection([0, d]);
 
@@ -210,8 +185,20 @@
                         .attr("dy", ".35em")
                         .text(function(d) { return d + "°"; });
 
-                    d3.csv("stars.csv", type, function(error, stars)
+                    //console.log(csv_text);
+                    //console.log(csv_string);
+
+                    //var csv_arr = CSV.parse(csv_text);
+
+                    //        RA: h m s
+                    //        DEC: d m s
+                    //        18h10m
+                    //        x -> [s m h]
+                    //        x -> m ->>01->m
+
+                    d3.csv('stars.csv', type, function(error, stars)
                     {
+                      console.log(arr);
                       if (error) throw error;
 
                       svg.insert("g", ".ticks")

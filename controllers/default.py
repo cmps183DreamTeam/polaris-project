@@ -108,9 +108,13 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-
+    #
     import json
     json_str = json.dumps(call_dict)
+
+    # stars = [{"ID": 3, "greek_letter"}]
+    # csv_string = 'ID, greek_letter, constellation, RA_hour, RA_min, RA_sec, dec_deg, dec_min, dec_sec, magnitude\n' + '3,, Psc, 00, 05, 20.1, -05, 42, 27, 4.61\n' + '15, alf, And, 00, 0\n' + '8, 23.2, +29, 05, 26, 2.06\n' + '21, bet, Cas, 00, 0\n' + '9, 10.6, +59, 0\n' + '8, 59, 2.27\n' + '25, eps, Phe, 00, 0\n' + '9, 24.6, -45, 44, 51, 3.87\0'
+
     return dict(json_dict=json_str, dict = call_dict, reqs=request.vars)
 
 def save_query():
