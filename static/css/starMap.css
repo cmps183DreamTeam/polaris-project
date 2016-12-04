@@ -1,0 +1,58 @@
+body {
+  background: radial-gradient(720px at 490px, #081f2b 0%, #061616 100%);
+  height: 960px;
+}
+
+path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.horizon {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.graticule {
+  stroke: #fff;
+  stroke-opacity: .15;
+}
+
+.ticks line {
+  stroke: #fff;
+}
+
+.ticks text {
+  fill: #fff;
+  text-anchor: middle;
+}
+
+.ticks--right-ascension text:nth-of-type(6n + 1) {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.stars {
+  fill: #fff;
+  stroke: #000;
+}
+
+.star--active {
+  stroke: yellow;
+}
+
+.voronoi {
+  fill: none;
+  pointer-events: all;
+}
+
+.cross {
+  fill: none;
+  stroke: yellow;
+  stroke-width: 0.5px;
+}

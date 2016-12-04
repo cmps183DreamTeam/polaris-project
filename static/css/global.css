@@ -5,6 +5,13 @@ body{
 body * {
     font-size: 16px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+h1
+{
+    font-family: "Avenir light";
+    font-size: 120px;
 }
 
 .table {
@@ -109,9 +116,62 @@ html, body {
     float: left;
 }
 
+
+
+/* Save Query Button */
+
 button#save_query_button {
     margin-right: 10%;
     float: right;
 }
 
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+td
+{
+    background-color: #f4511e;
+}
+
+td.sorting_asc, td.sorting_desc
+{
+    background-color: darkturquoise;
+}
 

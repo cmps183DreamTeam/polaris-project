@@ -10,8 +10,11 @@
         <script src="{{=URL('static', 'js/makeTable.js')}}"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+        <link href = "{{=URL('static','css/dataTables.min.css')}}" type ="text/css" rel="stylesheet">
 
+        <!-- Star Map Files -->
+        <link href = "{{=URL('static','css/starMap.css')}}" type ="text/css" rel="stylesheet">
+        <script src="{{=URL('static', 'js/starMap.js')}}"></script>
 
         <!-- One page website -->
         <link href = "{{=URL('static','css/jquery.fullPage.css')}}" rel="stylesheet" type="text/css">
@@ -22,9 +25,7 @@
         <script>
             $(document).ready(function()
             {
-                $('#fullpage').fullpage({
-                    sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
-                });
+                $('#fullpage').fullpage({});
             });
         </script>
 
@@ -35,66 +36,22 @@
             var del_post_url = "{{=URL('default', 'del_post', user_signature=True)}}";
             var show_name = false;
         </script>
+
     </head>
+
+
     <body>
         <div id="fullpage">
             <!--1st section-->
-            <div class="section">
-                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
-                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
-                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
-                </div>
-
-                <div id='container'></div>
-                <div id='highlighted'>Nothing Highlighted</div>
-                <div id='selected'>Nothing Selected</div>
-                <script>
-                    var json_str = '{{=XML(json_dict)}}';
-
-                    console.log(json_str);
-
-
-                    var arr = JSON.parse(json_str);
-                    console.log(arr);
-
-
-                    var table_plot = makeTable()
-                      .datum(arr)
-                      .sortBy('mag', true)
-
-                    d3.select('#container').call(table_plot);
-
-                    table_plot.on('highlight', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                           d3.select('#highlighted').text('Mouse on row '  + data.GeneID);
-                      }
-                    });
-
-                    table_plot.on('select', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                        d3.select('#selected').text(
-                          'Last clicked row was ' + data.GeneID
-                        );
-                      }
-                    });
-
-                </script>
-                <button style="background-color: white; border-color: lightgrey; border-width: inherit;"
-                        id="save_query_button" class="button" align="right"
-                        href="{{=URL('default','save_query', user_signature=True)}}">
-                    Save this query
-                </button>
+            <div class="section" id="section1">
+                <h1>The Polaris Project</h1>
             </div>
 
+
+
+
             <!--2nd section-->
-            <div class="section">
-                <a class="back-button" href="{{=URL('default','index')}}">Back</a>
+            <div class="section" id="section2">
                 <div id="input-form" class="form-modal">
                     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
                         <div class="button" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;">
@@ -112,6 +69,57 @@
                         <input class="button" type="submit" value="Submit">
                     </form>
                 </div>
+            </div>
+
+            <!--3rd section-->
+            <div class="section" id="section1">
+                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
+                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
+                </div>
+
+                <div id='results_table'></div>
+
+                <script>
+                    var json_str = '{{=XML(json_dict)}}';
+
+                    console.log(json_str);
+
+
+                    var arr = JSON.parse(json_str);
+                    console.log(arr);
+
+
+                    var table_plot = makeTable()
+                      .datum(arr)
+                      .sortBy('mag', true);
+
+                    d3.select('#results_table').call(table_plot);
+
+                    table_plot.on('highlight', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                           d3.select('#highlighted');
+                      }
+                    });
+
+                    table_plot.on('select', function(data, on_off)
+                    {
+                      if(on_off)
+                      {
+                          //if the data is highlighted
+                        d3.select('#selected');
+                      }
+                    });
+
+                </script>
+                <button id="save_query_button" class="button" align="right"
+                        href="{{=URL('default','save_query', user_signature=True)}}">
+                    <span>
+                        Save this query
+                    </span>
+                </button>
             </div>
         </div>
     </body>

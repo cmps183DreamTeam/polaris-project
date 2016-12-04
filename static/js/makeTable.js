@@ -92,7 +92,7 @@ function makeTable()
 		dispatcher.highlight(table.rows(row).data()[0], on_off);
 
 		if(on_off == false) {
-			return $(row).find("td").css("background-color", "white");
+			return $(row).find("td").css("background-color", "orangered");
 		}
 
 		var mag = Math.max(7, Number($(row).find("td").eq(3).text()));
