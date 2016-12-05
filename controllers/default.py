@@ -143,13 +143,16 @@ def search():
 
 def aprox_strehl():
     import math
-    wavelength_reference = '0.5 mu' #micrometer #500nm
-    theta_const = '10arcsec'    #10s
+    wavelength = 500.0 #nm
+    wavelength_reference = 500.0 #micrometer #500nm
+    theta_const = 10.0#'10arcsec'    #10s '10arcsec'
     theta_const_by_wavelength = theta_const*(wavelength_reference)*pow((wavelength/wavelength_reference), 5/6)
+    print(theta_const_by_wavelength)
     sima_pow_2 = pow((theta_const_by_wavelength/theta_const), 5/3)
     strehl = pow(math.e, -sima_pow_2)
     #NGS
-    return strehl
+    #return strehl
+    return response.json(dict(s=strehl))
 
 def save_query():
     #in_ra = request.vars.ra
