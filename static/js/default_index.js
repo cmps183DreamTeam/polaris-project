@@ -173,12 +173,42 @@ var app = function () {
     self.get_posts();
     $("#vue-div").show();
     */
+    /////////Bri's Code//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    self.vue = new Vue({
+        el: "#vue-div",
+        delimiters: ['${', '}'],
+        unsafeDelimiters: ['!{', '}'],
+        data: {
+            products: [],
+            cart: [],
+            orders: [],
+            product_search: '',
+            cart_size: 0,
+            cart_total: 0,
+            page: 'prod'
+        },
+        methods: {
+            get_products: self.get_products,
+            inc_desired_quantity: self.inc_desired_quantity,
+            inc_cart_quantity: self.inc_cart_quantity,
+            buy_product: self.buy_product,
+            goto: self.goto,
+            do_search: self.get_products,
+            pay: self.pay,
+            wipe_cart: self.wipe_cart,
+        }
+
+    });
 
     return self;
 };
 
 // start
-app();
+var APP = null;
+
+// This will make everything accessible from the js console;
+// for instance, self.x above would be accessible as APP.x
+jQuery(function(){APP = app();});
 
 // don't show debug
 /*var APP = null;
