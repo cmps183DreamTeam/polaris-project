@@ -54,18 +54,17 @@
             <div class="section" id="section2">
                 <div id="input-form" class="form-modal">
                     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-                        Enter target name (if known)
-                        <input class="input" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;" placeholder="Name">
-                        </input>
-                        <input style="display: none;" id="name" class="input" type="text" name="name" placeholder="Target Name {{=reqs.name}}">
-                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}">
-                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}">
-                        <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}"/>
-                        <input type="range" name="points" min="1" max="10" step="0.5" placeholder="Pick Radius θ">Pick Radius θ</form>
-                        <input class="input" type="text" name="wavelength" placeholder="Observed Wavelength λ"/>
-                        <select class="input" name="cat">
-                            <option value="USNO-B1" style="fill: black">USNO-B1</option>
-                        </select>
+                        <div class="button" id="pick_by_name" style="color: grey;background-color: black;margin-bottom: 10px;border-color: white;">
+
+                        </div>
+                        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
+                        <input class="input" type="text" name="ra" placeholder="RA: hh mm ss" value="18h36m56.33645s">
+                        <input class="input" type="text" name="dec" placeholder="DEC: dd mm" value="+38d47m01.2802s">
+                        <input class="input" type="text" name="rad" placeholder="Radius: mm ss" value="5s"/>
+                            <select class="input" name="cat">
+                                <option value="USNO-B1">USNO-B1</option>
+                            </select>
+                        {{pass}}
                         <input class="button" type="submit" value="Submit">
                     </form>
                 </div>

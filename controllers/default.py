@@ -19,7 +19,7 @@ def index():
     #from astroquery.vizier import Vizier
     #from astropy.coordinates import SkyCoord
     #from astropy.coordinates import Angle
-    redirect(URL('default', 'search'))
+    #redirect(URL('default', 'search'))
     return dict()
 
 def mag_key(catalog):
