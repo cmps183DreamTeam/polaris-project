@@ -19,6 +19,7 @@ def index():
     #from astroquery.vizier import Vizier
     #from astropy.coordinates import SkyCoord
     #from astropy.coordinates import Angle
+    redirect(URL('default', 'search'))
     return dict()
 
 def mag_key(catalog):
@@ -99,6 +100,11 @@ def find_guides(target, cat, rad):
     return dict
 
 def search():
+    if request.vars.ra is None:
+        request.vars.ra = "0h0m0s"
+        request.vars.dec = "+0s"
+        request.vars.rad = "0s"
+        request.vars.cat ='USNO-B1'
     in_ra = request.vars.ra
     in_dec = request.vars.dec
     in_rad = request.vars.rad
