@@ -1,11 +1,15 @@
 {{extend 'layout.html'}}
 {{block head}}
-<link rel="stylesheet" href="{{=URL('static','css/global.css')}}"/>
+<link rel="stylesheet" href="{{=URL('static','css/global.css')}}" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html"/>
 {{end head}}
+<div class="note">The Polaris Project
+    <br> <span> Advanced Guide Star Search Tool </span>
+</div>
 <div id="input-form" class="form-modal">
     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
         <div class="button" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;">
-            Pick a target by name
+
         </div>
         <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss" value="18h36m56.33645s">

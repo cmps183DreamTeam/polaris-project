@@ -40,10 +40,22 @@ body * {
     font-size: 16px;
 }
 
+.note {
+    margin-top: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 200%;
+
+}
+
+.note span {
+    font-size: 0.8em;
+}
+
 .form-modal {
-    width: 350px;
+    width: 40%;
     padding: 20px;
-    margin: 10% 5px 15px;
+    margin: 10% auto 15px;
     border: solid 2px rgba(0,0,0,0.1);
     border-radius: 6px;
 }
@@ -89,24 +101,17 @@ html, body {
 
 .container {
     position: fixed;
-    width: 340px;
+    width: 40%;
     height: 200px;
-    top: 55%;
-    left: 30%;
-    margin-top: -400px;
-    margin-left: -400px;
-    border: solid 1px rgba(0,0,0,0.1);
-
 }
 
-#user-input {
-    width: 40%;
-    float: left;
+#container {
+    width: 800px;
+    margin: 0 auto;
 }
 
-#input-form {
-    width: 40%;
-    float: left;
+#container table tbody td {
+    color: white;
 }
 
 button#save_query_button {

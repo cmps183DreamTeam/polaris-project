@@ -1,9 +1,9 @@
 function makeTable()
 {
 	//Define Margin
-    var margin = {left: 80, right: 80, top: 50, bottom: 50 },
-        width = 1000 - margin.left -margin.right,
-        height = 100 - margin.top - margin.bottom;
+    var margin = {left: 0, right: 80, top: 50, bottom: 50 },
+        width = 10 - margin.left -margin.right,
+        height = 70 - margin.top - margin.bottom;
 
 	var data, sort_by, filter_cols; // Customizable variables
 
@@ -65,7 +65,21 @@ function makeTable()
 	      columns: colnames.map(function(e) { return {data: e}; }),
 	      "bLengthChange": false, // Disable page size change
 	      "bDeferRender": true,
-	      "order": sort_by
+          "paging": false,
+          "searching": false,
+          "stateSave": false,
+          "autoWidth": false,
+          "info": false,
+          "processing": false,
+	      "order": sort_by,
+			"rowCallback": function (row, data, index) {
+				var mag = 1 - (data.mag + 2.5)/22.5;
+				var red = Math.floor(255 * mag);
+				var green = 0;
+				var blue = 0;
+				$(row).find("td").css("background-color", "rgb(" + red + "," + green + "," + blue + ")");
+			}
+
 	    })
 
 	    tableSelect.style("visibility", "visible");
@@ -90,16 +104,6 @@ function makeTable()
 
 		// Fire a highlight event, with the data and highlight status.
 		dispatcher.highlight(table.rows(row).data()[0], on_off);
-
-		if(on_off == false) {
-			return $(row).find("td").css("background-color", "white");
-		}
-
-		var mag = Math.max(7, Number($(row).find("td").eq(3).text()));
-		var red = ((mag/20) * 255).toFixed(0);
-		var green = ((mag/16) * 255).toFixed(0);
-		var blue = ((mag/11) * 255).toFixed(0);
-		$(row).find("td").css("background-color", "rgb(" + red + "," + green + "," + blue + ")");
 	}
 	function select(row, on_off) {
 		// Similar to highlight function.
