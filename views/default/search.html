@@ -44,7 +44,7 @@
         <div id="fullpage">
             <!--1st section-->
             <div class="section" id="section1">
-                <h1> The Polaris Project </h1>
+                <h1 id = "title"> The Polaris Project </h1>
             </div>
 
 
@@ -54,9 +54,6 @@
             <div class="section" id="section2">
                 <div id="input-form" class="form-modal">
                     <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-                        <div class="button" id="pick_by_name" style="color: grey;background-color: black;margin-bottom: 10px;border-color: white;">
-
-                        </div>
                         <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
                         <input class="input" type="text" name="ra" placeholder="RA: hh mm ss" value="18h36m56.33645s">
                         <input class="input" type="text" name="dec" placeholder="DEC: dd mm" value="+38d47m01.2802s">
@@ -114,12 +111,17 @@
                     });
 
                 </script>
-                <button id="save_query_button" class="button" align="right"
-                        href="{{=URL('default','save_query', user_signature=True)}}">
-                    <span>
-                        Save this query
-                    </span>
-                </button>
+                <a id="exportData" onclick="exportData(this);" class="button"><i class="icon-download"></i> Download</a>
+                <script>
+                    function exportData(el)
+                    {
+                        var json_str = '{{=XML(json_dict)}}'
+                        var data = "text/txt;charset=utf-8," + encodeURIComponent(JSON.stringify(json_str));
+                        // what to return in order to show download window?
+                        el.setAttribute("href", "data:"+data);
+                        el.setAttribute("download", "data.txt");
+                    }
+                </script>
             </div>
 
             <!--4th section-->

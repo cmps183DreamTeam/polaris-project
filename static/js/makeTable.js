@@ -65,6 +65,9 @@ function makeTable()
 	      columns: colnames.map(function(e) { return {data: e}; }),
 	      "bLengthChange": false, // Disable page size change
 	      "bDeferRender": true,
+          "paging": false,
+          "searching": false,
+          "info": false,
 	      "order": sort_by
 	    })
 
@@ -92,7 +95,7 @@ function makeTable()
 		dispatcher.highlight(table.rows(row).data()[0], on_off);
 
 		if(on_off == false) {
-			return $(row).find("td").css("background-color", "orangered");
+			return $(row).find("td").css("background-color", "#9e9e9e");
 		}
 
 		var mag = Math.max(7, Number($(row).find("td").eq(3).text()));
