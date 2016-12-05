@@ -112,8 +112,11 @@ html, body {
 }
 
 #input-form {
+    position: absolute;
+    top: 50px;
+    right: 500px;
     width: 40%;
-    float: left;
+    height: 200px;
 }
 
 
@@ -173,5 +176,31 @@ td
 td.sorting_asc, td.sorting_desc
 {
     background-color: darkturquoise;
+}
+
+
+/* Input Range */
+input[type="range"]
+{
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    width: 550px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.15, #a8a8a8)
+    );
+}
+
+input[type='range']::-webkit-slider-circle
+{
+    -webkit-appearance: none !important;
+    background-color: #E9E9E9;
+    border: 1px solid #CECECE;
+    height: 15px;
+    width: 15px;
 }
 
