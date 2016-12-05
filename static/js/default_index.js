@@ -174,6 +174,10 @@ var app = function () {
     $("#vue-div").show();
     */
     /////////Bri's Code//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    self.goto = function (page) {
+        self.vue.page = page;
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -185,7 +189,7 @@ var app = function () {
             product_search: '',
             cart_size: 0,
             cart_total: 0,
-            page: 'prod'
+            page: 'hist'
         },
         methods: {
             get_products: self.get_products,

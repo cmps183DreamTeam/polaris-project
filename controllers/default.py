@@ -20,7 +20,6 @@ def index():
     #from astropy.coordinates import SkyCoord
     #from astropy.coordinates import Angle
     #redirect(URL('default', 'search'))
-    redirect(URL('default', 'search'))
     return dict()
 
 def mag_key(catalog):
@@ -54,6 +53,26 @@ def user():
     """
 
     return dict(form=auth())
+
+def save_query():
+    """
+    import json
+    cart_json = request.vars.cart
+    cart_data = json.loads(cart_json)
+    db.customer_order.insert(
+        customer_info=request.vars.customer_info,
+        #transaction_token=json.dumps(token),
+        cart=request.vars.cart)
+    for item in cart_data:
+        for key in item:
+            print("key: " + key + "->" + str(item[key]))
+        row = db(db.product.id == item["id"]).select().first()
+        row.quantity = row.quantity - item["cart_quantity"]
+        row.update_record() # saves above change
+    return response.json(cart_data)
+    """
+    import json
+    return dict()
 
 
 def celestial_target(ra, dec):
@@ -101,10 +120,10 @@ def find_guides(target, cat, rad):
     return dict
 
 def search():
-    if request.vars is None:
-        request.vars.ra = 0
-        request.vars.dec = 0
-        request.vars.rad = 0
+    if request.vars.ra is None:
+        request.vars.ra = "0h0m0s"
+        request.vars.dec = "+0s"
+        request.vars.rad = "0s"
         request.vars.cat ='USNO-B1'
 
     in_ra = request.vars.ra
@@ -146,6 +165,7 @@ def save_query():
     #    redirect(URL('default', 'index'))
     #elif form.errors:
     #    session.flash = T("Can't process those values.")
+    import json
     return
 
 @cache.action()

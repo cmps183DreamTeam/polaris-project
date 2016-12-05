@@ -21,6 +21,9 @@
         <script src="{{=URL('static', 'js/jquery.easings.min.js')}}"></script>
         <script src="{{=URL('static', 'js/jquery.fullPage.min.js')}}"></script>
 
+        <!-- font awesome -->
+        <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
+
         <!-- One page script function -->
         <script>
             $(document).ready(function()
@@ -41,104 +44,117 @@
 
 
     <body>
-        <div id="fullpage">
         <div id="vue-div">
-            <!--1st section-->
-            <div class="section" id="section1">
-                <h1> The Polaris Project </h1>
-            </div>
-
-
-
-
-            <!--2nd section-->
-            <div class="section" id="section2">
-                <div id="input-form" class="form-modal">
-                    <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
-                        Enter target name (if known)
-                        <input class="input" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;" placeholder="Name">
-                        </input>
-                        <input style="display: none;" id="name" class="input" type="text" name="name" placeholder="Target Name {{=reqs.name}}">
-                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}">
-                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}">
-                        <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}"/>
-                        <input type="range" name="points" min="1" max="10" step="0.5" placeholder="Pick Radius θ">Pick Radius θ</form>
-                        <input class="input" type="text" name="wavelength" placeholder="Observed Wavelength λ"/>
-                        <select class="input" name="cat">
-                            <option value="USNO-B1" style="fill: black">USNO-B1</option>
-                        </select>
-                        <input class="button" type="submit" value="Submit">
-                    </form>
-                </div>
-            </div>
-
-
-
-
-            <!--3rd section-->
-            <div class="section" id="section1">
-                <IFRAME SRC="http://www.sky-map.org/?object=polaris&show_box=1&zoom=5&box_color=yellow&box_width=50&box_height=50" WIDTH=1280 HEIGHT=900></IFRAME>
-
-                <script>
-
-                </script>
-            </div>
-
-
-
-
-
-            <!--4th section-->
-            <div class="section" id="section2">
-                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
-                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
+            <div id="fullpage" v-if="page=='search'">
+            
+                <!--1st section-->
+                <div class="section" id="section1">
+                    <h1> The Polaris Project </h1>
                 </div>
 
-                <div id='results_table'></div>
-
-                <script>
-                    var json_str = '{{=XML(json_dict)}}';
-
-                    console.log(json_str);
 
 
-                    var arr = JSON.parse(json_str);
-                    console.log(arr);
+
+                <!--2nd section-->
+                <div class="section" id="section2">
+                    <div id="input-form" class="form-modal">
+                        <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                            Enter target name (if known)
+                            <input class="input" id="pick_by_name" style="color: grey;background-color: white;margin-bottom: 10px;border-color: white;" placeholder="Name">
+                            </input>
+                            <input style="display: none;" id="name" class="input" type="text" name="name" placeholder="Target Name {{=reqs.name}}">
+                            <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}">
+                            <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}">
+                            <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}"/>
+                            <input type="range" name="points" min="1" max="10" step="0.5" placeholder="Pick Radius θ">Pick Radius θ</form>
+                            <input class="input" type="text" name="wavelength" placeholder="Observed Wavelength λ"/>
+                            <select class="input" name="cat">
+                                <option value="USNO-B1" style="fill: black">USNO-B1</option>
+                            </select>
+                            <input class="button" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
 
 
-                    var table_plot = makeTable()
-                      .datum(arr)
-                      .sortBy('mag', true);
 
-                    d3.select('#results_table').call(table_plot);
 
-                    table_plot.on('highlight', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                           d3.select('#highlighted');
-                      }
-                    });
+                <!--3rd section-->
+                <div class="section" id="section1">
+                    <IFRAME SRC="http://www.sky-map.org/?object=polaris&show_box=1&zoom=5&box_color=yellow&box_width=50&box_height=50" WIDTH=1280 HEIGHT=900></IFRAME>
 
-                    table_plot.on('select', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
-                          //if the data is highlighted
-                        d3.select('#selected');
-                      }
-                    });
+                    <script>
 
-                </script>
-                <button id="save_query_button" class="button" align="right"
-                        href="{{=URL('default','save_query', user_signature=True)}}">
-                    <span>
-                        Save this query
-                    </span>
-                </button>
+                    </script>
+                </div>
+
+
+
+
+
+                <!--4th section-->
+                <div class="section" id="section2">
+                    <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
+                        Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
+                    </div>
+
+                    <div id='results_table'></div>
+
+                    <script>
+                        var json_str = '{{=XML(json_dict)}}';
+
+                        console.log(json_str);
+
+
+                        var arr = JSON.parse(json_str);
+                        console.log(arr);
+
+
+                        var table_plot = makeTable()
+                          .datum(arr)
+                          .sortBy('mag', true);
+
+                        d3.select('#results_table').call(table_plot);
+
+                        table_plot.on('highlight', function(data, on_off)
+                        {
+                          if(on_off)
+                          {
+                              //if the data is highlighted
+                               d3.select('#highlighted');
+                          }
+                        });
+
+                        table_plot.on('select', function(data, on_off)
+                        {
+                          if(on_off)
+                          {
+                              //if the data is highlighted
+                            d3.select('#selected');
+                          }
+                        });
+
+                    </script>
+                    <button id="save_query_button" class="button" align="right"
+                            href="{{=URL('default','save_query', user_signature=True)}}">
+                        <span>
+                            Save this query
+                        </span>
+                    </button>
+                    <button id="save_query_button" class="button" align="right"
+                            v-on:click="goto('hist')">
+                        <span>
+                            <i class="fa  fa-clock-o"></i> Saved Queries
+                        </span>
+                    </button>
+                    
+                </div>
             </div>
-        </div>    
+            <div  v-if="page=='hist'">    
+                <div class="section" id="section1">
+                    <h1> Saved Queries </h1>
+                </div>
+            </div>
         </div>
     </body>
 </html>

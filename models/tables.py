@@ -17,3 +17,5 @@ db.define_table('queries',
                 Field('created_on', 'datetime', default=datetime.datetime.utcnow()),
                 )
 
+
+
