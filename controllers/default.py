@@ -18,6 +18,10 @@ def index():
     """
     #
     redirect(URL('default', 'search'))
+    request.vars.ra = "0h0m0s"
+    request.vars.dec = "+0s"
+    request.vars.rad = "0s"
+    request.vars.cat ='USNO-B1'
     return dict()
 
 def mag_key(catalog):
@@ -108,9 +112,6 @@ def search():
     db.results.insert(datum=json_str)
     return dict(json_dict=json_str, reqs=request.vars)
 
-def test(data):
-    redirect(URL('default', 'test'))
-    return
 
 def aprox_strehl():
     import math
