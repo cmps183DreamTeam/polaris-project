@@ -17,11 +17,8 @@ def index():
     return auth.wiki()
     """
     #
+    db.results.truncate()
     redirect(URL('default', 'search'))
-    request.vars.ra = "0h0m0s"
-    request.vars.dec = "+0s"
-    request.vars.rad = "0s"
-    request.vars.cat ='USNO-B1'
     return dict()
 
 def mag_key(catalog):
@@ -75,9 +72,10 @@ def find_guides(target, cat, rad):
                 col_list['mag'] = float(row['R2mag'])
                 mag_type = '2nd'
             else:
-                col_list['mag'] = '-'
+                col_list['mag'] = 20.0
                 #mag_type already intiated "None"
-            dict.append(col_list)
+            if col_list['mag'] < 12.0:
+                dict.append(col_list)
     else:
         col_list = {}
         col_list['RA'] = float(0)

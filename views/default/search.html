@@ -28,9 +28,7 @@
         </script>
 
         <script>
-            var add_post_url = "{{=URL('default', 'add_post', user_signature=True)}}";
-            var edit_post_url = "{{=URL('default', 'edit_post', user_signature=True)}}";
-            var del_post_url = "{{=URL('default', 'del_post', user_signature=True)}}";
+
         </script>
     </head>
     <body>
@@ -57,18 +55,13 @@
                 </div>
             </div>
 
+            {{ if json_dict is not None: }}
             <!--3rd section-->
             <div class="section" id="section1">
-                <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
-                    Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
-                </div>
                 <div id='results_table'></div>
                 <script>
                     var json_str = '{{=XML(json_dict)}}';
-                    console.log(json_str);
                     var arr = JSON.parse(json_str);
-                    console.log(arr);
-
                     var table_plot = makeTable()
                       .datum(arr)
                       .sortBy('mag', true);
@@ -100,6 +93,7 @@
                     }
                 </script>
             </div>
+            {{pass}}
 
             <!--4th section-->
             <div class="section" id="section2">
