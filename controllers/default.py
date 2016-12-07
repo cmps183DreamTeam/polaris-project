@@ -7,8 +7,6 @@
 # - user is required for authentication and authorization
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
-global global_dict
-
 
 def index():
     """
@@ -87,6 +85,7 @@ def find_guides(target, cat, rad):
     return dict
 
 def search():
+    import json
     none_ra = request.vars.ra is None
     none_dec = request.vars.dec is None
     none_rad = request.vars.rad is None
@@ -104,15 +103,9 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    db.results.truncate()
-    db.results.insert(datum=call_dict)
-    #global_dict = call_dict#[{'DEC': -0.021273, 'RA': 359.883353, 'mag': 18.8700008392334}]
-    import json
     json_str = json.dumps(call_dict)
-    #test(json_str)
-    #response.json(call_dict)
-    global_dict = call_dict
-    #print(global_dict)
+    db.results.truncate()
+    db.results.insert(datum=json_str)
     return dict(json_dict=json_str, reqs=request.vars)
 
 def test(data):
