@@ -17,6 +17,7 @@ def index():
     return auth.wiki()
     """
     #
+    db.results.truncate()
     redirect(URL('default', 'search'))
     return dict()
 
@@ -71,9 +72,10 @@ def find_guides(target, cat, rad):
                 col_list['mag'] = float(row['R2mag'])
                 mag_type = '2nd'
             else:
-                col_list['mag'] = '-'
+                col_list['mag'] = 20.0
                 #mag_type already intiated "None"
-            dict.append(col_list)
+            if col_list['mag'] < 12.0:
+                dict.append(col_list)
     else:
         col_list = {}
         col_list['RA'] = float(0)
@@ -85,6 +87,7 @@ def find_guides(target, cat, rad):
     return dict
 
 def search():
+    import json
     none_ra = request.vars.ra is None
     none_dec = request.vars.dec is None
     none_rad = request.vars.rad is None
@@ -102,9 +105,11 @@ def search():
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
     call_dict = find_guides(cVega, in_cat, in_rad)
-    import json
     json_str = json.dumps(call_dict)
+    db.results.truncate()
+    db.results.insert(datum=json_str)
     return dict(json_dict=json_str, reqs=request.vars)
+
 
 def aprox_strehl():
     import math
@@ -115,6 +120,10 @@ def aprox_strehl():
     strehl = pow(math.e, -sima_pow_2)
     #NGS
     return strehl
+
+def return_dict():
+    saved_result = db().select(db.results.ALL).first()
+    return response.json(saved_result["datum"])
 
 def save_query():
     #in_ra = request.vars.ra
