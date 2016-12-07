@@ -12,7 +12,7 @@ var app = function () {
         return v.map(function(f) {f._idx = k++;});
     };
 
-    console.log('vue: default_index.js: app()');
+    //console.log('vue: default_index.js: app()');
 
     //enumerate();
     /*

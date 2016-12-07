@@ -16,10 +16,8 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    #from astroquery.vizier import Vizier
-    #from astropy.coordinates import SkyCoord
-    #from astropy.coordinates import Angle
-    #redirect(URL('default', 'search'))
+    #
+    redirect(URL('default', 'search'))
     return dict()
 
 def mag_key(catalog):
@@ -29,11 +27,6 @@ def mag_key(catalog):
         'GSC': 'Pmag',
         'USNO-B1': 'R1mag',
     }[catalog]
-
-def test():
-    redirect(URL('default', 'index'))
-    response.flash = T(request.vars.name)
-    return dict(name=request.vars.name)
 
 def user():
     """
@@ -51,9 +44,7 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
-
     return dict(form=auth())
-
 
 def celestial_target(ra, dec):
     from astropy.coordinates import SkyCoord
@@ -94,7 +85,10 @@ def find_guides(target, cat, rad):
     return dict
 
 def search():
-    if request.vars.ra is None:
+    none_ra = request.vars.ra is None
+    none_dec = request.vars.dec is None
+    none_rad = request.vars.rad is None
+    if ( none_ra or none_dec or none_rad ):
         request.vars.ra = "0h0m0s"
         request.vars.dec = "+0s"
         request.vars.rad = "0s"
@@ -102,8 +96,7 @@ def search():
     in_ra = request.vars.ra
     in_dec = request.vars.dec
     in_rad = request.vars.rad
-    #in_cat = request.vars.cat
-    in_cat = 'USNO-B1' if (request.vars.cat) is None else (request.vars.cat)
+    #in_cat = 'USNO-B1' if (request.vars.cat) is None else (request.vars.cat)
     in_cat = 'USNO-B1'
     #call function to get coordinates
     cVega = celestial_target(in_ra, in_dec)
@@ -111,7 +104,7 @@ def search():
     call_dict = find_guides(cVega, in_cat, in_rad)
     import json
     json_str = json.dumps(call_dict)
-    return dict(json_dict=json_str, dict = call_dict, reqs=request.vars)
+    return dict(json_dict=json_str, reqs=request.vars)
 
 def aprox_strehl():
     import math
@@ -146,7 +139,6 @@ def download():
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
-
 
 def call():
     """
