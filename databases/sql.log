@@ -78,3 +78,21 @@ ALTER TABLE queries ADD created_on TIMESTAMP;
 timestamp: 2016-11-10T09:43:03.521921
 ALTER TABLE queries ADD user_email CHAR(512);
 success!
+timestamp: 2016-12-06T21:13:22.308779
+CREATE TABLE results(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    datum BLOB
+);
+success!
+DELETE FROM results;
+DELETE FROM sqlite_sequence WHERE name='results';
+success!
+DELETE FROM results;
+DELETE FROM sqlite_sequence WHERE name='results';
+success!
+DELETE FROM results;
+DELETE FROM sqlite_sequence WHERE name='results';
+success!
+DELETE FROM results;
+DELETE FROM sqlite_sequence WHERE name='results';
+success!
