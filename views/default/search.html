@@ -5,7 +5,6 @@
         <script src="{{=URL('static', 'js/vue.js')}}"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-
         <!-- Sources for D3 table -->
         <script src="{{=URL('static', 'js/makeTable.js')}}"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -23,23 +22,17 @@
 
         <!-- One page script function -->
         <script>
-            $(document).ready(function()
-            {
+            $(document).ready(function() {
                 $('#fullpage').fullpage({});
             });
         </script>
 
         <script>
-            var posts_url = "{{=URL('default', 'get_posts')}}";
             var add_post_url = "{{=URL('default', 'add_post', user_signature=True)}}";
             var edit_post_url = "{{=URL('default', 'edit_post', user_signature=True)}}";
             var del_post_url = "{{=URL('default', 'del_post', user_signature=True)}}";
-            var show_name = false;
         </script>
-
     </head>
-
-
     <body>
         <div id="fullpage">
             <!--1st section-->
@@ -47,17 +40,14 @@
                 <h1 id = "title"> The Polaris Project </h1>
             </div>
 
-
-
-
             <!--2nd section-->
             <div class="section" id="section2">
                 <div id="input-form" class="form-modal">
-                    <form enctype="multipart/form-data" method="POST" action="{{= URL('default', 'search')}}">
+                    <form enctype="multipart/form-data" method="POST" action="{{=URL('default', 'search')}}">
                         <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
-                        <input class="input" type="text" name="ra" placeholder="RA: hh mm ss" value="18h36m56.33645s">
-                        <input class="input" type="text" name="dec" placeholder="DEC: dd mm" value="+38d47m01.2802s">
-                        <input class="input" type="text" name="rad" placeholder="Radius: mm ss" value="5s"/>
+                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}" value="18h36m56.33645s">
+                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}"value="+38d47m01.2802s">
+                        <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}" value="5s"/>
                             <select class="input" name="cat">
                                 <option value="USNO-B1">USNO-B1</option>
                             </select>
@@ -67,24 +57,17 @@
                 </div>
             </div>
 
-
             <!--3rd section-->
             <div class="section" id="section1">
                 <div style="float: right;margin-right: 25%;margin-bottom: 10px;">
                     Approx-ed Strehl Value: <div class="dynamic" id="strehl"></div>
                 </div>
-
                 <div id='results_table'></div>
-
                 <script>
                     var json_str = '{{=XML(json_dict)}}';
-
                     console.log(json_str);
-
-
                     var arr = JSON.parse(json_str);
                     console.log(arr);
-
 
                     var table_plot = makeTable()
                       .datum(arr)
@@ -92,29 +75,23 @@
 
                     d3.select('#results_table').call(table_plot);
 
-                    table_plot.on('highlight', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
+                    table_plot.on('highlight', function(data, on_off) {
+                      if(on_off) {
                           //if the data is highlighted
                            d3.select('#highlighted');
                       }
                     });
 
-                    table_plot.on('select', function(data, on_off)
-                    {
-                      if(on_off)
-                      {
+                    table_plot.on('select', function(data, on_off) {
+                      if(on_off) {
                           //if the data is highlighted
                         d3.select('#selected');
                       }
                     });
-
                 </script>
                 <a id="exportData" onclick="exportData(this);" class="button"><i class="icon-download"></i> Download</a>
                 <script>
-                    function exportData(el)
-                    {
+                    function exportData(el) {
                         var json_str = '{{=XML(json_dict)}}'
                         var data = "text/txt;charset=utf-8," + encodeURIComponent(JSON.stringify(json_str));
                         // what to return in order to show download window?
@@ -127,9 +104,7 @@
             <!--4th section-->
             <div class="section" id="section2">
                 <IFRAME SRC="http://www.sky-map.org/?object=polaris&show_box=1&zoom=5&box_color=yellow&box_width=50&box_height=50" WIDTH=1280 HEIGHT=900></IFRAME>
-
                 <script>
-
                 </script>
             </div>
         </div>
