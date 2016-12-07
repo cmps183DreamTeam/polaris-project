@@ -124,8 +124,7 @@ def aprox_strehl():
 
 def return_dict():
     saved_result = db().select(db.results.ALL).first()
-    #saved_result = db(db.results.ALL).select().first()
-    return response.json(saved_result)
+    return response.json(saved_result["datum"])
 
 def save_query():
     #in_ra = request.vars.ra

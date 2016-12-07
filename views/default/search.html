@@ -208,11 +208,10 @@
                     .text(function(d) { return d + "°"; });
 
                 d3.json("{{=URL('default', 'return_dict')}}", function(error, stars) {
-                //arr.forEach(stars, function(stars) {
-                  //if (error) throw error;
-                  console.log("AVE!!!");
-                  console.log(stars);
-                  stars.forEach(function(d) {
+                  //stars = JSON.parse(stars);
+                  arr_stars = JSON.parse(stars);
+                  console.log(arr_stars);
+                  arr_stars.forEach(function(d) {
                         d.RA = +d.RA;
                         console.log(d.RA);
                         d.DEC = +d.DEC;
