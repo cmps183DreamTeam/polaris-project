@@ -208,22 +208,18 @@
                     .text(function(d) { return d + "°"; });
 
                 d3.json("{{=URL('default', 'return_dict')}}", function(error, stars) {
-                  //stars = JSON.parse(stars);
                   arr_stars = JSON.parse(stars);
                   console.log(arr_stars);
                   arr_stars.forEach(function(d) {
                         d.RA = +d.RA;
-                        console.log(d.RA);
                         d.DEC = +d.DEC;
-                        console.log(d.DEC);
                         d.mag = +d.mag;
-                        console.log(d.mag);
                     });
 
                   svg.insert("g", ".ticks")
                       .attr("class", "stars")
                     .selectAll("circle")
-                      .data(stars)
+                      .data(arr_stars)
                     .enter().append("circle")
                       .attr("id", function(d, i) { return "star-" + i; })
                       .attr("r", function(d) { return radius(d.mag); })
@@ -232,7 +228,7 @@
                   svg.append("g")
                       .attr("class", "voronoi")
                     .selectAll("path")
-                      .data(d3.geom.voronoi()(stars))
+                      .data(d3.geom.voronoi()(arr_stars))
                     .enter().append("path")
                       .on("mouseover", mouseovered)
                       .on("mouseout", mouseouted)
