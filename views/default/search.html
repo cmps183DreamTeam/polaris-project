@@ -42,15 +42,16 @@
             <div class="section" id="section2">
                 <div id="input-form" class="form-modal">
                     <form enctype="multipart/form-data" method="POST" action="{{=URL('default', 'search')}}">
-                        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega">
-                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}" value="18h36m56.33645s">
-                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}"value="+38d47m01.2802s">
+                        <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega"/>
+                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}" value="18h36m56.33645s"/>
+                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}"value="+38d47m01.2802s"/>
                         <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}" value="5s"/>
+                        <input class="input" type="number" name="wavelength" placeholder="Observed Wavelength λ nm"/>
                             <select class="input" name="cat">
                                 <option value="USNO-B1">USNO-B1</option>
                             </select>
                         {{pass}}
-                        <input class="button" type="submit" value="Submit">
+                        <input class="button" type="submit" value="Submit"/>
                     </form>
                 </div>
             </div>
@@ -58,6 +59,9 @@
             {{ if json_dict is not None: }}
             <!--3rd section-->
             <div class="section" id="section1">
+                <div style="color: lightgrey; float: right;margin-right: 25%;margin-bottom: 10px;">
+                    Aproximated Strehl Value: <div style="color: white;" class="dynamic" id="strehl">{{=strehl}}</div>
+                </div>
                 <div id='results_table'></div>
                 <script>
                     var json_str = '{{=XML(json_dict)}}';
@@ -104,7 +108,7 @@
 
             <!--5th section-->
             <div class="section" id="section1">
-                <script>
+                <script src="//d3js.org/d3.v3.min.js">
                 //var data = '{{URL('default', 'search')}}';
                 //var json_str = '{{=XML(json_dict)}}';
                 //var arr = JSON.parse(json_str);
