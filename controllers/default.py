@@ -91,16 +91,20 @@ def search():
     none_ra = request.vars.ra is None
     none_dec = request.vars.dec is None
     none_rad = request.vars.rad is None
-    if ( none_ra or none_dec or none_rad ):
+    none_wv = request.vars.wavelength is None
+    if ( none_ra or none_dec or none_rad or none_wv):
         request.vars.ra = "0h0m0s"
         request.vars.dec = "+0s"
         request.vars.rad = "0s"
         request.vars.cat ='USNO-B1'
+        request.vars.wavelength = 500.0
     in_ra = request.vars.ra
     in_dec = request.vars.dec
     in_rad = request.vars.rad
+    in_wv = request.vars.wavelength
     #in_cat = 'USNO-B1' if (request.vars.cat) is None else (request.vars.cat)
     in_cat = 'USNO-B1'
+    strehl = aprox_strehl_wv(in_wv)
     #call function to get coordinates
     cVega = celestial_target(in_ra, in_dec)
     #call find_guides
@@ -108,17 +112,17 @@ def search():
     json_str = json.dumps(call_dict)
     db.results.truncate()
     db.results.insert(datum=json_str)
-    return dict(json_dict=json_str, reqs=request.vars)
+    return dict(json_dict=json_str, reqs=request.vars, strehl=strehl)
 
-
-def aprox_strehl():
+def aprox_strehl_wv(nanom):
     import math
-    wavelength_reference = '0.5 mu' #micrometer #500nm
-    theta_const = '10arcsec'    #10s
-    theta_const_by_wavelength = theta_const*(wavelength_reference)*pow((wavelength/wavelength_reference), 5/6)
-    sima_pow_2 = pow((theta_const_by_wavelength/theta_const), 5/3)
-    strehl = pow(math.e, -sima_pow_2)
-    #NGS
+    wavelength_reference = 0.5#'0.5 mu' #micrometer #500nm
+    wv = nanom/1000.0
+    wavelength = wv
+    theta_const = 10.0#'10arcsec'    #10s
+    theta_by_wavelength = theta_const*pow(wavelength/wavelength_reference, 5.0/6.0)
+    sima_pow_2 = pow((theta_by_wavelength/theta_const), 5.0/3.0)
+    strehl = pow(math.e, -1*sima_pow_2)
     return strehl
 
 def return_dict():
