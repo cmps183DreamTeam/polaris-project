@@ -113,13 +113,6 @@ def search():
     db.results.insert(datum=json_str)
     return dict(json_dict=json_str, reqs=request.vars, strehl=strehl)
 
-def aprox_strehl_test():
-    wvs = [0.05, 0.2, 0.35, 0.5, 0.65, 0.8, 0.95]
-    result_array = []
-    for wv in wvs:
-        result_array.append(aprox_strehl_wv(wv))
-    return response.json(result_array)
-
 def aprox_strehl_wv(nanom):
     import math
     wavelength_reference = 0.5#'0.5 mu' #micrometer #500nm
@@ -130,38 +123,6 @@ def aprox_strehl_wv(nanom):
     sima_pow_2 = pow((theta_by_wavelength/theta_const), 5.0/3.0)
     strehl = pow(math.e, -1*sima_pow_2)
     return strehl
-
-def aprox_strehl():
-    import math
-    wavelength_reference = 0.5#'0.5 mu' #micrometer #500nm
-    wavelength = 0.65
-    theta_const = 10.0#'10arcsec'    #10s
-    theta_by_wavelength = theta_const*pow(wavelength/wavelength_reference, 5.0/6.0)
-    sima_pow_2 = pow((theta_by_wavelength/theta_const), 5.0/3.0)
-    strehl = pow(math.e, -1*sima_pow_2)
-    #NGS
-    return response.json(dict(strehl=strehl))
-    # return strehl
-    # return response.json(dict(
-    #     wavelength_reference=wavelength_reference,
-    #     wavelength=wavelength,
-    #     theta_const=theta_const,
-    #     wavelength_wavelength_reference=wavelength/wavelength_reference,
-    #     pow__wavelength_wavelength_reference__5_6_=pow(wavelength_wavelength_reference, 5.0/6.0),
-    #     theta_by_wavelength=theta_by_wavelength,
-    #     sima_pow_2=sima_pow_2,
-    #     strehl=strehl,
-    #     pow_5_6 = pow(10, 5.0/6.0)
-    # ))
-# def aprox_strehl():
-#     import math
-#     wavelength_reference = '0.5 mu' #micrometer #500nm
-#     theta_const = '10arcsec'    #10s
-#     theta_const_by_wavelength = theta_const*(wavelength_reference)*pow((wavelength/wavelength_reference), 5/6)
-#     sima_pow_2 = pow((theta_const_by_wavelength/theta_const), 5/3)
-#     strehl = pow(math.e, -sima_pow_2)
-#     #NGS
-#     return strehl
 
 def return_dict():
     saved_result = db().select(db.results.ALL).first()
