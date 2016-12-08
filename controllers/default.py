@@ -91,6 +91,7 @@ def search():
     none_ra = request.vars.ra is None
     none_dec = request.vars.dec is None
     none_rad = request.vars.rad is None
+    none_wv = request.vars.wavelength is None
     if ( none_ra or none_dec or none_rad or none_wv):
         request.vars.ra = "0h0m0s"
         request.vars.dec = "+0s"
