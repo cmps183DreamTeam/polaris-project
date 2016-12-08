@@ -13,7 +13,7 @@ body * {
 h1
 {
     font-family: "Avenir light";
-    font-size: 120px;
+    font-size: 60px;
 }
 
 .table {
@@ -114,11 +114,7 @@ html, body {
 }
 
 #input-form {
-    position: absolute;
-    top: 50px;
-    right: 500px;
-    width: 40%;
-    height: 200px;
+    margin: auto;
 }
 
 
