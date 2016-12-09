@@ -117,7 +117,7 @@ def search():
 def aprox_strehl_wv(nanom):
     import math
     wavelength_reference = 0.5#'0.5 mu' #micrometer #500nm
-    wv = nanom/1000.0
+    wv = float(nanom)/1000.0
     wavelength = wv
     theta_const = 10.0#'10arcsec'    #10s
     theta_by_wavelength = theta_const*pow(wavelength/wavelength_reference, 5.0/6.0)
