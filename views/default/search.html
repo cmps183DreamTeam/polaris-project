@@ -39,10 +39,10 @@
                 <div id="input-form" class="form-modal">
                     <form enctype="multipart/form-data" method="POST" action="{{=URL('default', 'search')}}">
                         <input style="display: none;" class="input" type="text" name="name" placeholder="Target Name" value="vega"/>
-                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}" value="18h36m56.33645s"/>
-                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}"value="+38d47m01.2802s"/>
-                        <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}" value="5s"/>
-                        <input class="input" type="number" name="wavelength" placeholder="Observed Wavelength λ nm"/>
+                        <input class="input" type="text" name="ra" placeholder="RA {{=reqs.ra}}" value="{{=reqs.ra}}"/>
+                        <input class="input" type="text" name="dec" placeholder="DEC {{=reqs.dec}}"value="{{=reqs.dec}}"/>
+                        <input class="input" type="text" name="rad" placeholder="Radius {{=reqs.rad}}" value="{{=reqs.rad}}"/>
+                        <input class="input" type="number" name="wavelength" placeholder="Observed Wavelength λ nm" value="{{=reqs.wavelength}}"/>
                             <select class="input" name="cat">
                                 <option value="USNO-B1">USNO-B1</option>
                             </select>
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            {{ if json_dict is not None: }}
+            {{ if (json_dict is not None): }}
             <!--2nd section-->
             <div class="section" id="section2">
                 <div style="color: lightgrey; float: right;margin-right: 25%;margin-bottom: 10px;">
@@ -105,12 +105,6 @@
             <!--4th section-->
             <div class="section" id="section2">
                 <script src="//d3js.org/d3.v3.min.js">
-                //var data = '{{URL('default', 'search')}}';
-                //var json_str = '{{=XML(json_dict)}}';
-                //var arr = JSON.parse(json_str);
-                //var star_dict = "{{=URL('default', 'return_dict')}}";
-                console.log("jQuery");
-
                 var width = 700,
                     height = 700,
                     scale = width * 0.45;
@@ -263,7 +257,6 @@
                     -k * Math.sin(phi)
                   ];
                 }
-
                 </script>
             </div>
         </div>

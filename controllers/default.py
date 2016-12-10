@@ -94,8 +94,8 @@ def search():
     none_wv = request.vars.wavelength is None
     if ( none_ra or none_dec or none_rad or none_wv):
         request.vars.ra = "0h0m0s"
-        request.vars.dec = "+0s"
-        request.vars.rad = "0s"
+        request.vars.dec = "+0d0m0s"
+        request.vars.rad = "5m"
         request.vars.cat ='USNO-B1'
         request.vars.wavelength = 500.0
     in_ra = request.vars.ra
@@ -117,6 +117,8 @@ def search():
 def aprox_strehl_wv(nanom):
     import math
     wavelength_reference = 0.5#'0.5 mu' #micrometer #500nm
+    if nanom == '':
+        nanom = '0'
     wv = float(nanom)/1000.0
     wavelength = wv
     theta_const = 10.0#'10arcsec'    #10s
