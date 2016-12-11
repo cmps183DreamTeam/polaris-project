@@ -82,7 +82,8 @@
                       }
                     });
                 </script>
-                <a id="exportData" onclick="exportData(this);" class="button"><i class="icon-download"></i> Download</a>
+                <a id="exportData" onclick="exportData(this);" class="button"><i class="icon-download">Download</i></a>
+                <a id="goStarChart" href="{{=URL('default', 'chart')}}" class="button"><i class="icon-download">Star Chart</i></a>
                 <script>
                     function exportData(el) {
                         var json_str = '{{=XML(json_dict)}}'
@@ -123,7 +124,7 @@
                 var path = d3.geo.path()
                     .projection(projection);
 
-                var svg = d3.select("body").append("svg")
+                var svg = d3.select("span").append("svg")
                     .attr("width", width)
                     .attr("height", height)
                   .append("g")

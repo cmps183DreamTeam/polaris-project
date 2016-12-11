@@ -131,6 +131,9 @@ def return_dict():
     saved_result = db().select(db.results.ALL).first()
     return response.json(saved_result["datum"])
 
+def chart():
+    return dict(hello='Hello')
+
 def save_query():
     #in_ra = request.vars.ra
     #in_dec = request.vars.dec
