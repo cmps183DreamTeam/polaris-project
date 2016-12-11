@@ -83,7 +83,7 @@
                     });
                 </script>
                 <a id="exportData" onclick="exportData(this);" class="button"><i class="icon-download">Download</i></a>
-                <a id="goStarChart" href="{{=URL('default', 'chart')}}" class="button"><i class="icon-download">Star Chart</i></a>
+                <a id="goStarChart" href="{{=URL('default', 'chart')}}" class="button" style="width: 80px; text-align: center;"><i class="icon-download">Star Chart</i></a>
                 <script>
                     function exportData(el) {
                         var json_str = '{{=XML(json_dict)}}'
